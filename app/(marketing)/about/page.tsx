@@ -23,9 +23,11 @@ export default function AboutPage() {
     <>
       <section className="relative border-b border-pl-border">
         <div className="relative h-[300px] w-full md:h-[420px]">
+          {/* Victoria Island and the Ikoyi marina — the brief's original URL
+              was Toronto, CN Tower and all. */}
           <Image
-            src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1400&q=80"
-            alt="Lagos skyline"
+            src="https://images.unsplash.com/photo-1618828665011-0abd973f7bb8?w=1400&q=80"
+            alt="Victoria Island, Lagos, from the water"
             fill
             priority
             className="object-cover opacity-40 grayscale"
@@ -90,12 +92,14 @@ export default function AboutPage() {
           <div className="mt-14 grid gap-px bg-pl-border sm:grid-cols-2">
             {TEAM.map((member) => (
               <article key={member.name} className="bg-pl-surface p-8">
+                {/* object-top: these are portraits, so a centred crop lands on
+                    the chest rather than the face. */}
                 <Image
                   src={member.image}
-                  alt=""
+                  alt={`${member.name}, ${member.role}`}
                   width={72}
                   height={72}
-                  className="h-18 w-18 object-cover grayscale"
+                  className="h-[72px] w-[72px] object-cover object-top grayscale"
                 />
                 <h3 className="mt-5 text-lg text-pl-text">{member.name}</h3>
                 <p className="pl-eyebrow mt-1.5">{member.role}</p>

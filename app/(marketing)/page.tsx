@@ -216,10 +216,10 @@ export default function LandingPage() {
               <div key={f.name} className="flex items-start gap-4">
                 <Image
                   src={f.image}
-                  alt=""
+                  alt={`${f.name}, ${f.role}`}
                   width={64}
                   height={64}
-                  className="h-16 w-16 shrink-0 object-cover grayscale"
+                  className="h-16 w-16 shrink-0 object-cover object-top grayscale"
                 />
                 <div>
                   <p className="text-[15px] text-pl-text">{f.name}</p>

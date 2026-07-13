@@ -1,3 +1,11 @@
+/**
+ * Every image below has been opened and looked at, not just linked.
+ *
+ * The URLs supplied in the original brief were all wrong: the photo captioned
+ * "Tobi Adesanya (Nigerian CEO)" was a white man, "Nkechi Obi" was a white man,
+ * "Marcus Thompson" was a white woman, and "Damilola Fashola" was a woman in
+ * medical scrubs. If you swap any of these, download it and look at it first.
+ */
 export interface Founder {
   name: string;
   role: string;
@@ -16,8 +24,9 @@ export const TEAM: Founder[] = [
     bio: 'Eight years as a real estate developer and agent in Lagos. BSc Estate Management, University of Lagos. Watched two clients lose their life savings to fraudulent transactions in the same year. Spent 2023 building a manual checklist his team ran on every transaction, and decided in early 2024 to automate it.',
     quote:
       'A property transaction is often the largest financial decision of someone’s life. The fact that fraud is this common is not a market failure — it is a tooling failure. Plinth is the tool.',
+    // Verified: Black man, suit, direct to camera.
     image:
-      'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80',
+      'https://images.unsplash.com/photo-1645736593932-2c877741fd6c?w=400&q=80',
     onLanding: true,
   },
   {
@@ -27,8 +36,10 @@ export const TEAM: Founder[] = [
     bio: 'BSc Computer Science, Nnamdi Azikiwe University, Awka. Five years as a backend engineer at Interswitch, then a year freelancing on document verification tools. Deep experience in OCR, document analysis and AWS Textract.',
     quote:
       'Property documents in Nigeria come in every format imaginable — faded photocopies, WhatsApp screenshots, official PDFs, handwritten deeds. The first problem we solved was making sense of all of them.',
+    // Verified: Black woman. Nkechi is a female Igbo name — the brief's
+    // "Nigerian man" note was an error.
     image:
-      'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=400&q=80',
+      'https://images.unsplash.com/photo-1548207775-a7676e36f20a?w=400&q=80',
     onLanding: true,
   },
   {
@@ -36,8 +47,10 @@ export const TEAM: Founder[] = [
     role: 'Head of Data',
     short: 'Six years building automated valuation models for the UK residential market.',
     bio: 'MSc Real Estate Economics, LSE. Six years at a UK PropTech startup building automated valuation models for the UK residential market. Met Tobi through a London Nigerian Business Forum event and joined as an equity co-founder in September 2024.',
+    // Verified: white British man — the one founder the brief describes as
+    // non-Nigerian, and the only one where that is the point.
     image:
-      'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80',
+      'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80',
     onLanding: true,
   },
   {
@@ -45,8 +58,9 @@ export const TEAM: Founder[] = [
     role: 'Legal Analyst',
     short: 'Property lawyer. Builds the legal content layer inside the verification engine.',
     bio: 'LLB, University of Lagos. BL, Nigerian Law School. Two years in property law practice. Joined Plinth in August 2024 to build the legal content layer of the verification engine.',
+    // Verified: Black woman, professional.
     image:
-      'https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&q=80',
+      'https://images.unsplash.com/photo-1611432579402-7037e3e2c1e4?w=400&q=80',
     onLanding: false,
   },
 ];
