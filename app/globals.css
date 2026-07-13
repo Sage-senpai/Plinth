@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --pl-bg: #080705;
+  --pl-surface: #100f0c;
+  --pl-surface-2: #18160f;
+  --pl-border: #28241c;
+  --pl-border-h: #3d3828;
+
+  /* Primary: Copper / brick */
+  --pl-copper: #b45309;
+  --pl-copper-lgt: #d97706;
+  --pl-copper-dim: rgba(180, 83, 9, 0.12);
+
+  /* Accent: Structural blue */
+  --pl-blue: #1e40af;
+  --pl-blue-lgt: #2563eb;
+  --pl-blue-dim: rgba(30, 64, 175, 0.12);
+
+  /* Verification states */
+  --pl-verified: #22c55e;
+  --pl-flagged: #f59e0b;
+  --pl-invalid: #dc2626;
+  --pl-pending: #94a3b8;
+
+  /* Typography */
+  --pl-text: #ede8e3;
+  --pl-muted: #78716c;
+  --pl-faint: #28241c;
+
+  --pl-glow-copper: 0 0 22px rgba(180, 83, 9, 0.22);
+  --pl-glow-blue: 0 0 18px rgba(30, 64, 175, 0.18);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background-color: var(--pl-bg);
+    color: var(--pl-text);
+    font-family: var(--font-body), 'Jost', sans-serif;
+    font-weight: 400;
+  }
+
+  ::selection {
+    background: var(--pl-copper);
+    color: #fff;
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--pl-blue-lgt);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Technical-drawing grid: 1px lines at 4% opacity */
+  .pl-grid {
+    background-image:
+      linear-gradient(to right, rgba(237, 232, 227, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(237, 232, 227, 0.04) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  .pl-grid-fade {
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 40%, transparent 100%);
+  }
+
+  .pl-rule {
+    border-color: var(--pl-border);
+  }
+
+  .pl-eyebrow {
+    font-family: var(--font-mono), monospace;
+    font-size: 0.6875rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--pl-muted);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #111;
+  }
+
+  .pl-no-print {
+    display: none !important;
+  }
+}
