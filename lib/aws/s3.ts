@@ -24,12 +24,22 @@ function s3(): S3Client {
   return client;
 }
 
-/** Presigned PUT so the browser uploads documents straight to S3. */
+/**
+ * Presigned PUT so the browser uploads documents straight to S3.
+ *
+ * There is no demo equivalent — without a bucket there is nowhere to put the
+ * bytes. Callers must check `hasAws` and skip the upload rather than be handed
+ * a URL that quietly goes nowhere; /api/upload does exactly that.
+ */
 export async function presignUpload(
   key: string,
   contentType: string,
 ): Promise<string> {
-  if (!hasAws) return `/api/demo-upload?key=${encodeURIComponent(key)}`;
+  if (!hasAws) {
+    throw new Error(
+      'presignUpload requires S3. Check hasAws and skip the upload in demo mode.',
+    );
+  }
 
   return getSignedUrl(
     s3(),
