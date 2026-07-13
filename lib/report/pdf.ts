@@ -21,6 +21,36 @@ const A4 = { width: 595.28, height: 841.89 };
 const MARGIN = 56;
 const CONTENT = A4.width - MARGIN * 2;
 
+/** The characters cp1252 adds above Latin-1. Everything else above 0xFF is out. */
+const CP1252_EXTRA = new Set(
+  '€‚ƒ„…†‡ˆ‰Š‹ŒŽ‘’“”•–—˜™š›œžŸ'.split(''),
+);
+
+/**
+ * pdf-lib's standard fonts are WinAnsi-encoded, and WinAnsi has no naira sign.
+ * Every figure in this product is in naira, and the report prose is written by
+ * Bedrock — so without this, one ₦ anywhere in a summary takes down the whole
+ * report. Naira becomes the NGN currency code (which is what a Nigerian legal
+ * document uses in body text anyway) and anything else unencodable is dropped
+ * rather than thrown.
+ */
+function safe(text: string): string {
+  let out = '';
+
+  for (const char of text.replace(/₦/g, 'NGN ')) {
+    const code = char.codePointAt(0) ?? 0;
+    if (code <= 0xff || CP1252_EXTRA.has(char)) {
+      out += char;
+    } else if (code === 0x2018 || code === 0x2019) {
+      out += "'";
+    } else if (code === 0x201c || code === 0x201d) {
+      out += '"';
+    }
+  }
+
+  return out;
+}
+
 interface Ctx {
   doc: PDFDocument;
   page: PDFPage;
@@ -39,7 +69,7 @@ function wrap(
   size: number,
   maxWidth: number,
 ): string[] {
-  const words = text.split(/\s+/).filter(Boolean);
+  const words = safe(text).split(/\s+/).filter(Boolean);
   const lines: string[] = [];
   let line = '';
 
@@ -92,7 +122,7 @@ function paragraph(
 function heading(ctx: Ctx, text: string): void {
   ensure(ctx, 52);
   ctx.y -= 16;
-  ctx.page.drawText(text.toUpperCase(), {
+  ctx.page.drawText(safe(text.toUpperCase()), {
     x: MARGIN,
     y: ctx.y,
     size: 9,
@@ -198,7 +228,7 @@ export async function buildReport(args: {
   heading(ctx, 'Document Verification');
   for (const d of v.documents) {
     ensure(ctx, 34);
-    const label = documentLabel(d.type);
+    const label = safe(documentLabel(d.type));
     ctx.page.drawText(label, {
       x: MARGIN,
       y: ctx.y,
@@ -253,7 +283,7 @@ export async function buildReport(args: {
     const colour = severityColour(f.severity);
 
     const top = ctx.y + 10;
-    ctx.page.drawText(`${f.severity.toUpperCase()}  ·  ${f.fieldAffected}`, {
+    ctx.page.drawText(safe(`${f.severity.toUpperCase()}  ·  ${f.fieldAffected}`), {
       x: MARGIN + 12,
       y: ctx.y,
       size: 8.5,
@@ -287,7 +317,7 @@ export async function buildReport(args: {
     heading(ctx, 'Valuation');
     ensure(ctx, 40);
 
-    ctx.page.drawText(formatNaira(valuation.estimatedValue), {
+    ctx.page.drawText(safe(formatNaira(valuation.estimatedValue)), {
       x: MARGIN,
       y: ctx.y,
       size: 18,
@@ -297,7 +327,9 @@ export async function buildReport(args: {
     ctx.y -= 18;
 
     ctx.page.drawText(
-      `${formatNaira(valuation.rangeLow)} — ${formatNaira(valuation.rangeHigh)}   ·   confidence ${(valuation.confidence * 100).toFixed(0)}%`,
+      safe(
+        `${formatNaira(valuation.rangeLow)} — ${formatNaira(valuation.rangeHigh)}   ·   confidence ${(valuation.confidence * 100).toFixed(0)}%`,
+      ),
       { x: MARGIN, y: ctx.y, size: 8.5, font: ctx.mono, color: MUTED },
     );
     ctx.y -= 20;
@@ -319,7 +351,9 @@ export async function buildReport(args: {
       for (const c of valuation.comparables.slice(0, 6)) {
         ensure(ctx, 13);
         ctx.page.drawText(
-          `${c.address} — ${formatNaira(c.salePrice)} — ${formatDate(c.saleDate)}`,
+          safe(
+            `${c.address} — ${formatNaira(c.salePrice)} — ${formatDate(c.saleDate)}`,
+          ),
           { x: MARGIN, y: ctx.y, size: 8.5, font: ctx.mono, color: MUTED },
         );
         ctx.y -= 13;
