@@ -2,7 +2,7 @@
  * Every image below has been opened and looked at, not just linked.
  *
  * The URLs supplied in the original brief were all wrong: the photo captioned
- * "Tobi Adesanya (Nigerian CEO)" was a white man, "Nkechi Obi" was a white man,
+ * "Eze Charles (Nigerian CEO)" was a white man, "Nkechi Obi" was a white man,
  * "Marcus Thompson" was a white woman, and "Damilola Fashola" was a woman in
  * medical scrubs. If you swap any of these, download it and look at it first.
  */
@@ -18,7 +18,7 @@ export interface Founder {
 
 export const TEAM: Founder[] = [
   {
-    name: 'Tobi Adesanya',
+    name: 'Eze Charles',
     role: 'CEO and Co-founder',
     short: 'Eight years a Lagos developer and agent. Watched two clients lose everything.',
     bio: 'Eight years as a real estate developer and agent in Lagos. BSc Estate Management, University of Lagos. Watched two clients lose their life savings to fraudulent transactions in the same year. Spent 2023 building a manual checklist his team ran on every transaction, and decided in early 2024 to automate it.',
@@ -46,7 +46,7 @@ export const TEAM: Founder[] = [
     name: 'Marcus Thompson',
     role: 'Head of Data',
     short: 'Six years building automated valuation models for the UK residential market.',
-    bio: 'MSc Real Estate Economics, LSE. Six years at a UK PropTech startup building automated valuation models for the UK residential market. Met Tobi through a London Nigerian Business Forum event and joined as an equity co-founder in September 2024.',
+    bio: 'MSc Real Estate Economics, LSE. Six years at a UK PropTech startup building automated valuation models for the UK residential market. Met Eze through a London Nigerian Business Forum event and joined as an equity co-founder in September 2024.',
     // Verified: white British man — the one founder the brief describes as
     // non-Nigerian, and the only one where that is the point.
     image:

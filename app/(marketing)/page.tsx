@@ -240,7 +240,7 @@ export default function LandingPage() {
               already sold the same plot three months earlier.
             </p>
             <footer className="mt-5 text-sm text-pl-muted">
-              Tobi Adesanya, CEO
+              Eze Charles, CEO
             </footer>
           </blockquote>
 

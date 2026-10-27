@@ -54,18 +54,18 @@ export default function AboutPage() {
 
             <div className="max-w-2xl space-y-6 text-base leading-relaxed text-pl-muted md:text-lg">
               <p>
-                In February 2024, a client of Tobi&apos;s lost ₦18 million on a
+                In February 2024, a client of Eze&apos;s lost ₦18 million on a
                 plot in Lekki Phase 2. The Certificate of Occupancy was genuine.
                 The governor&apos;s consent had been forged. The seller had sold
                 the same plot three months earlier.
               </p>
               <p>
-                The professional due diligence firm Tobi used had spotted
+                The professional due diligence firm Eze used had spotted
                 nothing, because they checked the document&apos;s surface, not
                 its provenance.
               </p>
               <p className="font-serif text-xl leading-relaxed text-pl-text md:text-2xl">
-                Tobi called Nkechi the same week. “I need to build something,”
+                Eze called Nkechi the same week. “I need to build something,”
                 he said, “that looks at a document the way a forger looks at it.
                 It knows what to fake and where.”
               </p>
