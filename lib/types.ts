@@ -1,10 +1,10 @@
-/** Shared domain types for Plinth. */
+/** Shared domain types for Proprepo. */
 
 export type PropertyType = 'residential' | 'commercial' | 'land';
 
 export type NigerianState = string;
 
-/** The 8 document types Plinth supports today. */
+/** The 8 document types Proprepo supports today. */
 export type DocumentType =
   | 'certificate_of_occupancy'
   | 'survey_plan'

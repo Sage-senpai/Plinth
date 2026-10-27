@@ -5,7 +5,7 @@ import { env } from '@/lib/env';
 /**
  * Auth for the pilot.
  *
- * Plinth's customers are individual buyers, estate agencies and one law firm —
+ * Proprepo's customers are individual buyers, estate agencies and one law firm —
  * they are onboarded by hand, so a credentials provider backed by the pilot
  * user list is honest about where the product is. Nothing here assumes it stays
  * that way: the session shape is what the workspace reads, so swapping in an
@@ -14,7 +14,7 @@ import { env } from '@/lib/env';
 export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
-      name: 'Plinth',
+      name: 'Proprepo',
       credentials: {
         email: { label: 'Email', type: 'email' },
         password: { label: 'Password', type: 'password' },

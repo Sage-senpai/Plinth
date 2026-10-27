@@ -18,7 +18,7 @@ import type {
 } from '@/lib/types';
 
 /**
- * Every read and write in Plinth goes through this module.
+ * Every read and write in Proprepo goes through this module.
  *
  * When DATABASE_URL is set it is a thin wrapper over Drizzle. When it is not,
  * it serves the seeded demo corpus from an in-memory store that survives hot

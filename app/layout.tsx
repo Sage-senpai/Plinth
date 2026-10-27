@@ -27,13 +27,13 @@ const mono = Martian_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   alternates: { canonical: '/' },
-  openGraph: { url: '/', siteName: 'Plinth', locale: 'en_NG', type: 'website' },
+  openGraph: { url: '/', siteName: 'Proprepo', locale: 'en_NG', type: 'website' },
   title: {
-    default: 'Plinth — Property due diligence for Nigeria',
-    template: '%s — Plinth',
+    default: 'Proprepo — Property due diligence for Nigeria',
+    template: '%s — Proprepo',
   },
   description:
-    'Plinth verifies Nigerian property documents, checks for fraud patterns, and generates a due diligence report before you sign anything.',
+    'Proprepo verifies Nigerian property documents, checks for fraud patterns, and generates a due diligence report before you sign anything.',
 };
 
 export default function RootLayout({

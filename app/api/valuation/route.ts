@@ -44,7 +44,7 @@ export async function POST(request: Request) {
       confidence: valuation.confidence,
     });
   } catch (error) {
-    console.error('[plinth] valuation failed', error);
+    console.error('[proprepo] valuation failed', error);
     return NextResponse.json(
       { error: 'Valuation could not be produced.' },
       { status: 500 },

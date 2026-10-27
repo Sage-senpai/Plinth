@@ -50,7 +50,7 @@ async function main() {
 
   console.log(`Seeded ${rows.length} comparable sales.`);
   console.log(
-    'These are the sales Plinth has been given. They are not the market —\n' +
+    'These are the sales Proprepo has been given. They are not the market —\n' +
       'every valuation widens its range to say so.',
   );
 }

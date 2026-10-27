@@ -11,7 +11,7 @@ import { AREAS } from '@/lib/property/areas';
 export const metadata: Metadata = {
   title: 'Search',
   description:
-    'Search Plinth’s property records, verification reports and comparable sales.',
+    'Search Proprepo’s property records, verification reports and comparable sales.',
 };
 
 export const dynamic = 'force-dynamic';
@@ -101,7 +101,7 @@ export default async function SearchPage({
             <div className="max-w-xl">
               <p className="text-sm leading-relaxed text-pl-muted">
                 Search across verification reports, recorded comparable sales
-                and the Lagos and Abuja areas Plinth covers. Reports are
+                and the Lagos and Abuja areas Proprepo covers. Reports are
                 searchable by address or by their reference — the one printed at
                 the top of the PDF.
               </p>
@@ -126,7 +126,7 @@ export default async function SearchPage({
             <div className="max-w-xl">
               <p className="text-pl-text">Nothing matched “{q}”.</p>
               <p className="mt-3 text-sm leading-relaxed text-pl-muted">
-                Plinth only holds records for properties that have been through
+                Proprepo only holds records for properties that have been through
                 a verification, and sales that have been reported to us. An
                 absence here is not evidence about the property — it means we
                 have not seen it.

@@ -109,7 +109,7 @@ export async function runVerification(job: VerifyJob): Promise<void> {
       summary,
     });
   } catch (error) {
-    console.error('[plinth] verification failed', job.verificationId, error);
+    console.error('[proprepo] verification failed', job.verificationId, error);
     await failVerification(job.verificationId);
     throw error;
   }

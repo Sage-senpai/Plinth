@@ -3,7 +3,7 @@ import { drizzle } from 'drizzle-orm/neon-http';
 import * as schema from './schema';
 
 /**
- * Plinth runs in two modes.
+ * Proprepo runs in two modes.
  *
  * With DATABASE_URL set, every read and write goes to Neon.
  * Without it (DEMO_MODE), the repository layer in ./repo falls back to the

@@ -1,6 +1,6 @@
-# Plinth
+# Proprepo
 
-AI due diligence for Nigerian real estate. Plinth verifies property documents,
+AI due diligence for Nigerian real estate. Proprepo verifies property documents,
 flags known fraud patterns, values the property against comparable sales, and
 produces a due diligence report a buyer can hand to their lawyer or their bank.
 
@@ -14,7 +14,7 @@ npm install
 npm run dev
 ```
 
-That is the whole setup. With no credentials configured, Plinth runs in **demo
+That is the whole setup. With no credentials configured, Proprepo runs in **demo
 mode**: every AWS capability degrades to a deterministic stub and the database
 falls back to a seeded in-memory store, so the entire product — landing page
 through PDF download — works on a clean checkout with no AWS account and no

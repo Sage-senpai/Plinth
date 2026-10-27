@@ -1,7 +1,7 @@
 import { formatNaira, formatSqm } from '@/lib/format';
 import type { Comparable, ValuationInput } from '@/lib/types';
 
-export const VALUATION_SYSTEM = `You are Plinth's automated valuation agent for Nigerian real estate.
+export const VALUATION_SYSTEM = `You are Proprepo's automated valuation agent for Nigerian real estate.
 
 You receive a subject property and a set of comparable sales from the same area.
 Produce a valuation the buyer can rely on to sanity-check an asking price.

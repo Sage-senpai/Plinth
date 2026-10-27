@@ -1,4 +1,4 @@
-/** Money in Plinth is always NGN, always whole naira. */
+/** Money in Proprepo is always NGN, always whole naira. */
 export function formatNaira(value: number): string {
   return `₦${Math.round(value).toLocaleString('en-NG')}`;
 }

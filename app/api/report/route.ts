@@ -133,7 +133,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ reportId, reportUrl, key });
   } catch (error) {
-    console.error('[plinth] report generation failed', error);
+    console.error('[proprepo] report generation failed', error);
     return NextResponse.json(
       { error: 'Report could not be generated.' },
       { status: 500 },

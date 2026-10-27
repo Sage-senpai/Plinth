@@ -28,7 +28,7 @@ export function SignInForm() {
 
     if (result?.error) {
       setError(
-        'Those credentials were not recognised. Plinth is in pilot — accounts are provisioned by hand.',
+        'Those credentials were not recognised. Proprepo is in pilot — accounts are provisioned by hand.',
       );
       setBusy(false);
       return;
@@ -85,7 +85,7 @@ export function SignInForm() {
       </Button>
 
       <p className="text-xs leading-relaxed text-pl-muted">
-        Plinth is in pilot with six customers. If you do not have an account and
+        Proprepo is in pilot with six customers. If you do not have an account and
         want one, the fastest route is to run a verification and tell us what it
         missed.
       </p>

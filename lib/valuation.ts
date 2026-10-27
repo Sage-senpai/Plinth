@@ -67,7 +67,7 @@ export function comparableValuation(
       rangeHigh: Math.round(estimate * 1.35),
       comparables: [],
       confidence: 0.3,
-      methodology: `There are no recorded comparable sales for ${input.location} in Plinth's database yet. This figure is an indicative land rate for the area applied to a ${input.sizeSqm} sqm plot — it is a starting point for a conversation, not a valuation. The range is deliberately wide. Treat any asking price within it as unverified, and commission a physical valuation before you commit.`,
+      methodology: `There are no recorded comparable sales for ${input.location} in Proprepo's database yet. This figure is an indicative land rate for the area applied to a ${input.sizeSqm} sqm plot — it is a starting point for a conversation, not a valuation. The range is deliberately wide. Treat any asking price within it as unverified, and commission a physical valuation before you commit.`,
     };
   }
 

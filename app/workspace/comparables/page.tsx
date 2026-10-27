@@ -37,7 +37,7 @@ export default async function ComparablesPage() {
         <p className="mt-4 text-sm leading-relaxed text-pl-muted">
           {comparables.length} recorded sales across {byArea.length} areas.
           Comparable data in Nigeria is thin and unevenly reported — every
-          valuation Plinth produces widens its range to say so rather than
+          valuation Proprepo produces widens its range to say so rather than
           inventing precision.
         </p>
       </div>
@@ -95,7 +95,7 @@ export default async function ComparablesPage() {
 
       <p className="mt-20 border-t border-pl-border pt-8 text-xs leading-relaxed text-pl-muted">
         Sales are drawn from the Lagos and Abuja land registries, filings shared
-        by partner law firms, and Plinth&apos;s estate agent network. A recorded
+        by partner law firms, and Proprepo&apos;s estate agent network. A recorded
         sale price is what the parties declared — in a market where stamp duty
         is assessed on the consideration, that is not always what changed hands.
         Sizes are as stated on the survey plan:{' '}

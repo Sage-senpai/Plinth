@@ -6,7 +6,7 @@ import { TEAM, TIMELINE, VALUES } from '@/lib/team';
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Plinth was founded in July 2024 in Lagos after a client lost ₦18 million to a forged Governor’s consent.',
+    'Proprepo was founded in July 2024 in Lagos after a client lost ₦18 million to a forged Governor’s consent.',
 };
 
 const METRICS = [
@@ -39,7 +39,7 @@ export default function AboutPage() {
         </div>
 
         <Container className="relative -mt-32 pb-20 md:-mt-40 md:pb-24">
-          <Eyebrow>About Plinth</Eyebrow>
+          <Eyebrow>About Proprepo</Eyebrow>
           <h1 className="mt-5 max-w-3xl font-serif text-4xl leading-[1.1] text-pl-text md:text-6xl">
             Fraud this common is not a market failure. It is a tooling failure.
           </h1>
@@ -74,7 +74,7 @@ export default function AboutPage() {
                 trillion a year. Professional due diligence exists, but it is
                 expensive, slow, and concentrated in Lagos and Abuja. Most
                 buyers in secondary cities and emerging areas are entirely
-                unprotected. Plinth exists to change the arithmetic of that.
+                unprotected. Proprepo exists to change the arithmetic of that.
               </p>
             </div>
           </div>

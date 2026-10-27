@@ -268,7 +268,7 @@ export const DEMO_VERIFICATIONS: VerificationRecord[] = [
     documents: CLEAN_DOCS,
     overallRisk: 'low',
     summary:
-      'The documents for this property are consistent with one another and with the Lagos State registry formats. The C of O reference is well-formed, the deed recites the correct root of title, and the parties named on the deed match the C of O. One minor point: the survey plan predates the C of O by three years, which is common but worth a two-hour site visit to re-confirm the beacons before completion. On the documents alone, this is a clean title. Plinth does not guarantee title — this report tells you what the papers say, and the papers say the right things.',
+      'The documents for this property are consistent with one another and with the Lagos State registry formats. The C of O reference is well-formed, the deed recites the correct root of title, and the parties named on the deed match the C of O. One minor point: the survey plan predates the C of O by three years, which is common but worth a two-hour site visit to re-confirm the beacons before completion. On the documents alone, this is a clean title. Proprepo does not guarantee title — this report tells you what the papers say, and the papers say the right things.',
     status: 'complete',
     createdAt: '2026-07-08T11:02:00.000Z',
   },

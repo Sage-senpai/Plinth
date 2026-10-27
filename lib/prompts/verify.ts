@@ -4,7 +4,7 @@ import { documentSpec } from '@/lib/property/documents';
 import type { DocumentType } from '@/lib/types';
 
 /** Document Fraud Detector (verify.ts v1). */
-export const VERIFY_SYSTEM = `You are Plinth's property document verification agent for Nigerian real estate.
+export const VERIFY_SYSTEM = `You are Proprepo's property document verification agent for Nigerian real estate.
 You receive extracted text and entities from a property document.
 
 Your task: identify fraud indicators, consistency issues, and missing elements.
@@ -78,7 +78,7 @@ export function verifyUserPrompt(args: {
 }
 
 /** Rolls the per-document analyses up into one buyer-facing summary. */
-export const SUMMARY_SYSTEM = `You are Plinth's due diligence summariser for Nigerian property transactions.
+export const SUMMARY_SYSTEM = `You are Proprepo's due diligence summariser for Nigerian property transactions.
 
 You receive the verification results for every document submitted for one
 property. Write a single summary paragraph for the buyer.
@@ -88,7 +88,7 @@ Rules:
 - Lead with the decision: is this safe to proceed with today, or not?
 - Explain the two or three findings that actually matter. Ignore noise.
 - Say what the buyer should do next, concretely, with realistic timescales.
-- Never guarantee clear title. Plinth surfaces what the documents say; the
+- Never guarantee clear title. Proprepo surfaces what the documents say; the
   buyer makes the informed decision.
 - 120-200 words. One paragraph. No headings, no bullets, no preamble.
 

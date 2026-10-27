@@ -7,7 +7,7 @@ export const SITE_URL =
       ? `https://${process.env.VERCEL_URL}`
       : 'http://localhost:3000');
 
-export const SITE_NAME = 'Plinth';
+export const SITE_NAME = 'Proprepo';
 
 export const SITE_DESCRIPTION =
-  'Plinth verifies Nigerian property documents, checks for fraud patterns, and generates a due diligence report before you sign anything.';
+  'Proprepo verifies Nigerian property documents, checks for fraud patterns, and generates a due diligence report before you sign anything.';

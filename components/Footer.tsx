@@ -8,7 +8,7 @@ export function Footer() {
         <div className="flex flex-col justify-between gap-10 md:flex-row">
           <div className="max-w-sm">
             <p className="font-mono text-sm uppercase tracking-[0.3em] text-pl-text">
-              Plinth
+              Proprepo
             </p>
             <p className="mt-4 text-sm leading-relaxed text-pl-muted">
               Property due diligence for Nigeria. We surface what the documents

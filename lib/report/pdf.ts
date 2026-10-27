@@ -179,7 +179,7 @@ export async function buildReport(args: {
   const { verification: v, address, narrative, valuation } = args;
 
   // Masthead
-  ctx.page.drawText('PLINTH', {
+  ctx.page.drawText('PROPREPO', {
     x: MARGIN,
     y: ctx.y,
     size: 11,
@@ -273,7 +273,7 @@ export async function buildReport(args: {
   if (!flags.length) {
     paragraph(
       ctx,
-      'No flags were raised against the documents submitted. This is not a guarantee of clear title — it means nothing in the papers contradicts itself or the registry formats Plinth checks against.',
+      'No flags were raised against the documents submitted. This is not a guarantee of clear title — it means nothing in the papers contradicts itself or the registry formats Proprepo checks against.',
       { color: MUTED },
     );
   }
@@ -388,14 +388,14 @@ export async function buildReport(args: {
   ctx.y -= 16;
   paragraph(
     ctx,
-    'Plinth does not guarantee clear title. This report sets out what the documents submitted say, where they contradict one another, and where they are silent. It is not legal advice and does not replace a physical search at the relevant lands registry or an inspection of the land. What you do with this information is your informed decision.',
+    'Proprepo does not guarantee clear title. This report sets out what the documents submitted say, where they contradict one another, and where they are silent. It is not legal advice and does not replace a physical search at the relevant lands registry or an inspection of the land. What you do with this information is your informed decision.',
     { size: 8, color: MUTED },
   );
 
   // Footers
   const pages = doc.getPages();
   pages.forEach((page, i) => {
-    page.drawText(`Plinth  ·  ${v.id}  ·  ${i + 1} of ${pages.length}`, {
+    page.drawText(`Proprepo  ·  ${v.id}  ·  ${i + 1} of ${pages.length}`, {
       x: MARGIN,
       y: MARGIN - 24,
       size: 7.5,

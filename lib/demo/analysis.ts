@@ -110,7 +110,7 @@ export function demoAnalysis(type: DocumentType): DocumentAnalysis {
             severity: 'minor',
             type: 'missing_element',
             description:
-              'Plinth could not classify this document with confidence. It may be a scan quality problem, or it may not be a document type we support yet.',
+              'Proprepo could not classify this document with confidence. It may be a scan quality problem, or it may not be a document type we support yet.',
             fieldAffected: 'Document type',
             recommendation:
               'Re-upload a clearer scan. If the problem persists, this document will need to be read by a person.',
@@ -139,15 +139,15 @@ export function demoSummary(
       major.length
         ? `There is a second problem alongside it: ${major[0].description.charAt(0).toLowerCase()}${major[0].description.slice(1)} `
         : ''
-    }Taken together these findings are consistent with the fraud pattern that costs Nigerian buyers the most money — a genuine root of title used to lend credibility to a transfer that never lawfully happened. A physical search at the state lands bureau against the consent reference and the beacon coordinates will settle it within about a week. Until it does, no further money should change hands. Plinth does not guarantee title; this report tells you what the documents say, and what they say here is a warning.`;
+    }Taken together these findings are consistent with the fraud pattern that costs Nigerian buyers the most money — a genuine root of title used to lend credibility to a transfer that never lawfully happened. A physical search at the state lands bureau against the consent reference and the beacon coordinates will settle it within about a week. Until it does, no further money should change hands. Proprepo does not guarantee title; this report tells you what the documents say, and what they say here is a warning.`;
   }
 
   if (major.length) {
-    return `The documents for ${address} are not safe to complete on today, but nothing here is necessarily fraud. ${major[0].description} ${major[0].recommendation} None of this is unusual in a Nigerian transaction, and all of it is fixable — but each gap is exactly the kind of thing a forger relies on, so close them before you pay rather than after. Make payment conditional, in writing, on the outstanding items being produced. Plinth does not guarantee title; it tells you what the papers say and where they are silent.`;
+    return `The documents for ${address} are not safe to complete on today, but nothing here is necessarily fraud. ${major[0].description} ${major[0].recommendation} None of this is unusual in a Nigerian transaction, and all of it is fixable — but each gap is exactly the kind of thing a forger relies on, so close them before you pay rather than after. Make payment conditional, in writing, on the outstanding items being produced. Proprepo does not guarantee title; it tells you what the papers say and where they are silent.`;
   }
 
   const risky = risk !== 'low';
   return `The documents for ${address} are consistent with one another and with the state registry formats we check against. The references are well-formed, the parties named across the documents match, and nothing in the chain of title contradicts itself.${
     risky ? ' There are minor points worth confirming before completion, listed below.' : ''
-  } On the documents alone, this is a clean title. That is not the same as a guarantee: Plinth surfaces what the available documents say, and a physical search plus a site visit remains the only way to confirm what is true on the ground. What you do with that is your informed decision.`;
+  } On the documents alone, this is a clean title. That is not the same as a guarantee: Proprepo surfaces what the available documents say, and a physical search plus a site visit remains the only way to confirm what is true on the ground. What you do with that is your informed decision.`;
 }

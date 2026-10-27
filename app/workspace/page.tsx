@@ -39,7 +39,7 @@ export default async function WorkspacePage() {
         <div className="mt-12 border border-dashed border-pl-border p-14 text-center">
           <p className="text-pl-text">No verifications yet.</p>
           <p className="mx-auto mt-2 max-w-sm text-sm leading-relaxed text-pl-muted">
-            Upload the documents for a property and Plinth will check them
+            Upload the documents for a property and Proprepo will check them
             against each other and against the fraud patterns we track.
           </p>
         </div>

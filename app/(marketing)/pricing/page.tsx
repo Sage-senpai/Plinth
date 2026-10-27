@@ -77,14 +77,14 @@ const FAQ = [
   },
   {
     q: 'Do you guarantee the title is clean?',
-    a: 'No, and be wary of anyone who does. Plinth surfaces what the documents say, where they contradict one another, and where they are silent. A physical search at the lands registry and an inspection of the land remain necessary. Our report tells your solicitor exactly where to look first, which is usually what the search fee is being spent on anyway.',
+    a: 'No, and be wary of anyone who does. Proprepo surfaces what the documents say, where they contradict one another, and where they are silent. A physical search at the lands registry and an inspection of the land remain necessary. Our report tells your solicitor exactly where to look first, which is usually what the search fee is being spent on anyway.',
   },
   {
     q: 'How long does a verification take?',
     a: 'About six minutes for a five-document property. You do not have to wait on the page — the report is there when you come back.',
   },
   {
-    q: 'What if Plinth finds nothing wrong?',
+    q: 'What if Proprepo finds nothing wrong?',
     a: 'Then you have a report that says so, in writing, that you can hand to your lawyer or your bank. That is the outcome most of our reports produce, and it is worth ₦12,000 on its own.',
   },
 ];

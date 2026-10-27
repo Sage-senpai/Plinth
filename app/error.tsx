@@ -11,7 +11,7 @@ export default function Error({
   reset: () => void;
 }) {
   useEffect(() => {
-    console.error('[plinth] unhandled error', error);
+    console.error('[proprepo] unhandled error', error);
   }, [error]);
 
   return (

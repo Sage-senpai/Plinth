@@ -96,5 +96,5 @@ export function documentKey(verificationId: string, fileName: string): string {
 }
 
 export function reportKey(verificationId: string): string {
-  return `reports/${verificationId}/plinth-due-diligence.pdf`;
+  return `reports/${verificationId}/proprepo-due-diligence.pdf`;
 }

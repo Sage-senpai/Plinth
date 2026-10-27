@@ -23,7 +23,7 @@ export const TEAM: Founder[] = [
     short: 'Eight years a Lagos developer and agent. Watched two clients lose everything.',
     bio: 'Eight years as a real estate developer and agent in Lagos. BSc Estate Management, University of Lagos. Watched two clients lose their life savings to fraudulent transactions in the same year. Spent 2023 building a manual checklist his team ran on every transaction, and decided in early 2024 to automate it.',
     quote:
-      'A property transaction is often the largest financial decision of someone’s life. The fact that fraud is this common is not a market failure — it is a tooling failure. Plinth is the tool.',
+      'A property transaction is often the largest financial decision of someone’s life. The fact that fraud is this common is not a market failure — it is a tooling failure. Proprepo is the tool.',
     // Verified: Black man, suit, direct to camera.
     image:
       'https://images.unsplash.com/photo-1645736593932-2c877741fd6c?w=400&q=80',
@@ -57,7 +57,7 @@ export const TEAM: Founder[] = [
     name: 'Damilola Fashola',
     role: 'Legal Analyst',
     short: 'Property lawyer. Builds the legal content layer inside the verification engine.',
-    bio: 'LLB, University of Lagos. BL, Nigerian Law School. Two years in property law practice. Joined Plinth in August 2024 to build the legal content layer of the verification engine.',
+    bio: 'LLB, University of Lagos. BL, Nigerian Law School. Two years in property law practice. Joined Proprepo in August 2024 to build the legal content layer of the verification engine.',
     // Verified: Black woman, professional.
     image:
       'https://images.unsplash.com/photo-1611432579402-7037e3e2c1e4?w=400&q=80',

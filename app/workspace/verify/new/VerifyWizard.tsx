@@ -308,7 +308,7 @@ export function VerifyWizard() {
                       </option>
                     ))}
                     <option value="unknown" className="bg-pl-surface">
-                      Let Plinth classify it
+                      Let Proprepo classify it
                     </option>
                   </select>
 

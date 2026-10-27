@@ -8,7 +8,7 @@ import type { Valuation } from '@/lib/types';
 /**
  * In demo mode there is no S3 bucket to presign against, so the report is
  * rebuilt on demand and streamed straight to the browser. The key carries the
- * verification id: reports/<verificationId>/plinth-due-diligence.pdf
+ * verification id: reports/<verificationId>/proprepo-due-diligence.pdf
  */
 export async function GET(request: Request) {
   const key = new URL(request.url).searchParams.get('key');
@@ -55,7 +55,7 @@ export async function GET(request: Request) {
   return new NextResponse(Buffer.from(pdf), {
     headers: {
       'Content-Type': 'application/pdf',
-      'Content-Disposition': `inline; filename="plinth-${verification.id}.pdf"`,
+      'Content-Disposition': `inline; filename="proprepo-${verification.id}.pdf"`,
       'Cache-Control': 'no-store',
     },
   });

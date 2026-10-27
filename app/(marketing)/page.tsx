@@ -75,7 +75,7 @@ export default function LandingPage() {
             </h1>
 
             <p className="mx-auto mt-8 max-w-2xl text-base leading-relaxed text-pl-muted md:text-lg">
-              Plinth verifies Nigerian property documents, checks for fraud
+              Proprepo verifies Nigerian property documents, checks for fraud
               patterns, and generates a due diligence report before you sign
               anything.
             </p>
@@ -122,7 +122,7 @@ export default function LandingPage() {
         <div className="pl-grid absolute inset-0 opacity-60" aria-hidden />
 
         <Container className="relative">
-          <Eyebrow>What Plinth does</Eyebrow>
+          <Eyebrow>What Proprepo does</Eyebrow>
           <h2 className="mt-5 max-w-2xl font-serif text-3xl leading-tight text-pl-text md:text-5xl">
             It reads a document the way a forger reads it.
           </h2>
@@ -258,7 +258,7 @@ export default function LandingPage() {
         <Container>
           <blockquote className="mx-auto max-w-3xl text-center">
             <p className="font-serif text-2xl leading-relaxed text-pl-text md:text-4xl md:leading-[1.35]">
-              “Plinth found a date inconsistency on the deed that our estate
+              “Proprepo found a date inconsistency on the deed that our estate
               agent had missed. That inconsistency saved us from what turned out
               to be a double-sale case.”
             </p>

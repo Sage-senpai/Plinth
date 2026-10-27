@@ -17,7 +17,7 @@ export default function SignInPage() {
             href="/"
             className="font-mono text-sm uppercase tracking-[0.3em] text-pl-text transition-colors hover:text-pl-copper-lgt"
           >
-            Plinth
+            Proprepo
           </Link>
 
           <div className="mt-10">
