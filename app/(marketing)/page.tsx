@@ -2,18 +2,19 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ButtonLink, Container, Eyebrow } from '@/components/ui';
 import { TEAM } from '@/lib/team';
+import { PlatformSection } from '@/components/PlatformSection'
 
 const PROBLEM = [
-  { figure: '₦1.5T', body: 'lost to fraudulent property transactions in Nigeria every year' },
+  { figure: 'â‚¦1.5T', body: 'lost to fraudulent property transactions in Nigeria every year' },
   { figure: '92%', body: 'of first-time buyers have no access to professional due diligence' },
   { figure: '14,000+', body: 'land fraud complaints made to the EFCC annually' },
 ];
 
 function SampleResult() {
   const documents = [
-    { label: 'Certificate of Occupancy', state: 'Verified', mark: '✓', tone: 'text-pl-verified border-pl-verified/30' },
+    { label: 'Certificate of Occupancy', state: 'Verified', mark: 'âœ“', tone: 'text-pl-verified border-pl-verified/30' },
     { label: "Governor's Consent", state: 'Flagged', mark: '!', tone: 'text-pl-flagged border-pl-flagged/30' },
-    { label: 'Deed of Assignment', state: 'Invalid', mark: '✕', tone: 'text-pl-invalid border-pl-invalid/30' },
+    { label: 'Deed of Assignment', state: 'Invalid', mark: 'âœ•', tone: 'text-pl-invalid border-pl-invalid/30' },
   ];
 
   return (
@@ -58,13 +59,13 @@ export default function LandingPage() {
 
   return (
     <>
-      {/* Hero — typographic, no image */}
+      {/* Hero â€” typographic, no image */}
       <section className="relative overflow-hidden border-b border-pl-border">
         <div className="pl-grid pl-grid-fade absolute inset-0" aria-hidden />
 
         <Container className="relative py-24 md:py-36">
           <div className="mx-auto max-w-4xl text-center">
-            <Eyebrow>Property due diligence · Nigeria</Eyebrow>
+            <Eyebrow>Property due diligence Â· Nigeria</Eyebrow>
 
             <h1 className="mx-auto mt-8 max-w-3xl font-serif text-[2.6rem] leading-[1.08] text-pl-text sm:text-6xl md:text-7xl">
               Your C of O might be real.
@@ -117,7 +118,7 @@ export default function LandingPage() {
         </Container>
       </section>
 
-      {/* Features — bento */}
+      {/* Features â€” bento */}
       <section className="relative border-b border-pl-border py-24 md:py-32">
         <div className="pl-grid absolute inset-0 opacity-60" aria-hidden />
 
@@ -135,14 +136,14 @@ export default function LandingPage() {
               </h3>
               <p className="mt-4 max-w-xl text-sm leading-relaxed text-pl-muted">
                 Textract extracts the structure. Bedrock checks it against the
-                fraud patterns that actually occur here — forged consent
+                fraud patterns that actually occur here â€” forged consent
                 endorsements, beacon numbers that don&apos;t match the address,
                 a deed signed before the C of O it relies on.
               </p>
 
               <div className="mt-8 border-l-2 border-l-pl-flagged bg-pl-surface2 p-5">
                 <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-pl-flagged">
-                  Major · Inconsistency · Governor&apos;s consent
+                  Major Â· Inconsistency Â· Governor&apos;s consent
                 </p>
                 <p className="mt-2.5 text-sm leading-relaxed text-pl-text">
                   The consent reference LSLB/GC/2024/3318 is dated 14 March
@@ -164,13 +165,13 @@ export default function LandingPage() {
 
               <div className="mt-8">
                 <p className="font-mono text-2xl text-pl-copper-lgt">
-                  ₦198,000,000
+                  â‚¦198,000,000
                 </p>
                 <div className="mt-4 h-[3px] w-full bg-pl-border">
                   <div className="h-full w-[62%] bg-pl-copper" />
                 </div>
                 <p className="mt-3 font-mono text-[11px] text-pl-muted">
-                  ₦172,000,000 — ₦231,000,000
+                  â‚¦172,000,000 â€” â‚¦231,000,000
                 </p>
               </div>
             </article>
@@ -193,7 +194,7 @@ export default function LandingPage() {
               </h3>
               <p className="mt-4 max-w-lg text-sm leading-relaxed text-pl-muted">
                 Executive summary, document-by-document findings, the valuation
-                and a numbered list of what to do on Monday morning — including
+                and a numbered list of what to do on Monday morning â€” including
                 what to search, who to instruct and what it should cost.
               </p>
             </article>
@@ -234,8 +235,8 @@ export default function LandingPage() {
 
           <blockquote className="mt-16 max-w-3xl border-l-2 border-l-pl-copper pl-6 md:pl-8">
             <p className="font-serif text-xl leading-relaxed text-pl-text md:text-2xl">
-              In February 2024 a client of mine lost ₦18 million on a plot in
-              Lekki Phase 2. The Certificate of Occupancy was genuine — the
+              In February 2024 a client of mine lost â‚¦18 million on a plot in
+              Lekki Phase 2. The Certificate of Occupancy was genuine â€” the
               governor&apos;s consent had been forged, and the seller had
               already sold the same plot three months earlier.
             </p>
@@ -248,7 +249,7 @@ export default function LandingPage() {
             href="/about"
             className="mt-9 inline-block text-sm text-pl-copper-lgt transition-colors hover:text-pl-copper"
           >
-            Read our full story →
+            Read our full story â†’
           </Link>
         </Container>
       </section>
@@ -258,18 +259,19 @@ export default function LandingPage() {
         <Container>
           <blockquote className="mx-auto max-w-3xl text-center">
             <p className="font-serif text-2xl leading-relaxed text-pl-text md:text-4xl md:leading-[1.35]">
-              “Proprepo found a date inconsistency on the deed that our estate
+              â€œProprepo found a date inconsistency on the deed that our estate
               agent had missed. That inconsistency saved us from what turned out
-              to be a double-sale case.”
+              to be a double-sale case.â€
             </p>
             <footer className="pl-eyebrow mt-8">
-              Buyer, Lekki, Lagos · Beta participant
+              Buyer, Lekki, Lagos Â· Beta participant
             </footer>
           </blockquote>
         </Container>
       </section>
 
       {/* CTA */}
+      <PlatformSection />
       <section className="bg-pl-copper py-20 md:py-24">
         <Container>
           <div className="flex flex-col items-start justify-between gap-9 md:flex-row md:items-center">
