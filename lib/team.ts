@@ -18,7 +18,7 @@ export interface Founder {
 
 export const TEAM: Founder[] = [
   {
-    name: 'Eze Charles',
+    name: 'Eze Ransome',
     role: 'CEO and Co-founder',
     short: 'Eight years a Lagos developer and agent. Watched two clients lose everything.',
     bio: 'Eight years as a real estate developer and agent in Lagos. BSc Estate Management, University of Lagos. Watched two clients lose their life savings to fraudulent transactions in the same year. Spent 2023 building a manual checklist his team ran on every transaction, and decided in early 2024 to automate it.',
@@ -76,7 +76,7 @@ export const TIMELINE = [
   },
   {
     when: 'Jul 2024',
-    what: 'Plinth Technologies Ltd. incorporated in Lagos State. ₦23M pre-seed closed.',
+    what: 'PropRepo Technologies Ltd. incorporated in Lagos State. ₦23M pre-seed closed.',
   },
   {
     when: 'Sep 2024',
