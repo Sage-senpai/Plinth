@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { ButtonLink, Container, Eyebrow } from '@/components/ui';
+import { ButtonLink, Container, Eyebrow, StepBadge } from '@/components/ui';
 import { TEAM, TIMELINE, VALUES } from '@/lib/team';
 
 export const metadata: Metadata = {
@@ -40,7 +40,7 @@ export default function AboutPage() {
 
         <Container className="relative -mt-32 pb-20 md:-mt-40 md:pb-24">
           <Eyebrow>About Proprepo</Eyebrow>
-          <h1 className="mt-5 max-w-3xl font-serif text-4xl leading-[1.1] text-pl-text md:text-6xl">
+          <h1 className="mt-5 max-w-3xl font-display text-4xl leading-[1.1] text-pl-text md:text-6xl">
             Fraud this common is not a market failure. It is a tooling failure.
           </h1>
         </Container>
@@ -64,7 +64,7 @@ export default function AboutPage() {
                 nothing, because they checked the document&apos;s surface, not
                 its provenance.
               </p>
-              <p className="font-serif text-xl leading-relaxed text-pl-text md:text-2xl">
+              <p className="font-display text-xl leading-relaxed text-pl-text md:text-2xl">
                 Eze called Nkechi the same week. “I need to build something,”
                 he said, “that looks at a document the way a forger looks at it.
                 It knows what to fake and where.”
@@ -85,13 +85,16 @@ export default function AboutPage() {
       <section className="border-b border-pl-border py-20 md:py-28">
         <Container>
           <Eyebrow>The team</Eyebrow>
-          <h2 className="mt-5 font-serif text-3xl text-pl-text md:text-4xl">
+          <h2 className="mt-5 font-display text-3xl text-pl-text md:text-4xl">
             Five people, three of whom have lost sleep over a land dispute.
           </h2>
 
-          <div className="mt-14 grid gap-px bg-pl-border sm:grid-cols-2">
+          <div className="mt-14 grid gap-5 sm:grid-cols-2">
             {TEAM.map((member) => (
-              <article key={member.name} className="bg-pl-surface p-8">
+              <article
+                key={member.name}
+                className="rounded-2xl border border-pl-border bg-pl-surface p-8"
+              >
                 {/* object-top: these are portraits, so a centred crop lands on
                     the chest rather than the face. */}
                 <Image
@@ -99,7 +102,7 @@ export default function AboutPage() {
                   alt={`${member.name}, ${member.role}`}
                   width={72}
                   height={72}
-                  className="h-[72px] w-[72px] object-cover object-top grayscale"
+                  className="h-[72px] w-[72px] rounded-full object-cover object-top grayscale"
                 />
                 <h3 className="mt-5 text-lg text-pl-text">{member.name}</h3>
                 <p className="pl-eyebrow mt-1.5">{member.role}</p>
@@ -108,7 +111,7 @@ export default function AboutPage() {
                 </p>
 
                 {member.quote ? (
-                  <p className="mt-5 border-l-2 border-l-pl-copper pl-4 font-serif text-[15px] leading-relaxed text-pl-text">
+                  <p className="mt-5 border-l-2 border-l-pl-copper pl-4 font-display text-[15px] leading-relaxed text-pl-text">
                     {member.quote}
                   </p>
                 ) : null}
@@ -144,13 +147,18 @@ export default function AboutPage() {
       </section>
 
       {/* Metrics */}
-      <section className="border-b border-pl-border py-20 md:py-24">
+      <section className="bg-pl-dark py-20 text-pl-cream md:py-24">
         <Container>
-          <div className="grid grid-cols-2 gap-px bg-pl-border md:grid-cols-3 lg:grid-cols-6">
+          <div className="grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-6">
             {METRICS.map((m) => (
-              <div key={m.label} className="bg-pl-surface px-5 py-7">
-                <p className="font-mono text-xl text-pl-text">{m.value}</p>
-                <p className="pl-eyebrow mt-2">{m.label}</p>
+              <div
+                key={m.label}
+                className="rounded-2xl border border-pl-dark-border bg-pl-dark-surface px-5 py-7"
+              >
+                <p className="font-display text-2xl font-semibold text-pl-cream">
+                  {m.value}
+                </p>
+                <p className="pl-eyebrow pl-eyebrow-on-dark mt-2">{m.label}</p>
               </div>
             ))}
           </div>
@@ -166,10 +174,8 @@ export default function AboutPage() {
             <div className="max-w-2xl space-y-10">
               {VALUES.map((value, i) => (
                 <div key={value.title}>
-                  <p className="font-mono text-[11px] text-pl-copper-lgt">
-                    0{i + 1}
-                  </p>
-                  <h3 className="mt-3 font-serif text-xl text-pl-text md:text-2xl">
+                  <StepBadge n={i + 1} />
+                  <h3 className="mt-3 font-display text-xl text-pl-text md:text-2xl">
                     {value.title}
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-pl-muted">
@@ -185,7 +191,7 @@ export default function AboutPage() {
       <section className="py-20 md:py-24">
         <Container>
           <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
-            <h2 className="max-w-xl font-serif text-2xl leading-tight text-pl-text md:text-3xl">
+            <h2 className="max-w-xl font-display text-2xl leading-tight text-pl-text md:text-3xl">
               Run a verification before you commit to anything.
             </h2>
             <ButtonLink href="/workspace/verify/new" className="shrink-0">

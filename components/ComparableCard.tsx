@@ -16,7 +16,7 @@ export function ComparableCard({
   source?: string | null;
 }) {
   return (
-    <article className="flex min-w-[260px] flex-col justify-between border border-pl-border bg-pl-surface p-5 transition-colors hover:border-pl-border-h">
+    <article className="flex min-w-[260px] flex-col justify-between rounded-2xl border border-pl-border bg-pl-surface p-5 transition-colors hover:border-pl-border-h">
       <div>
         <h3 className="text-[15px] leading-snug text-pl-text">{address}</h3>
         <p className="mt-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-pl-muted">

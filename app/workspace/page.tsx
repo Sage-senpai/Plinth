@@ -25,7 +25,7 @@ export default async function WorkspacePage() {
       <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
         <div>
           <Eyebrow>Workspace</Eyebrow>
-          <h1 className="mt-4 font-serif text-3xl text-pl-text md:text-4xl">
+          <h1 className="mt-4 font-display text-3xl text-pl-text md:text-4xl">
             Verifications
           </h1>
         </div>
@@ -36,7 +36,7 @@ export default async function WorkspacePage() {
       </div>
 
       {rows.length === 0 ? (
-        <div className="mt-12 border border-dashed border-pl-border p-14 text-center">
+        <div className="mt-12 rounded-2xl border border-dashed border-pl-border p-14 text-center">
           <p className="text-pl-text">No verifications yet.</p>
           <p className="mx-auto mt-2 max-w-sm text-sm leading-relaxed text-pl-muted">
             Upload the documents for a property and Proprepo will check them
@@ -101,12 +101,12 @@ export default async function WorkspacePage() {
           </div>
 
           {/* Mobile cards */}
-          <div className="mt-9 space-y-px bg-pl-border md:hidden">
+          <div className="mt-9 space-y-3 md:hidden">
             {rows.map((row) => (
               <Link
                 key={row.id}
                 href={`/workspace/verify/${row.id}`}
-                className="block bg-pl-surface p-5"
+                className="block rounded-2xl border border-pl-border bg-pl-surface p-5"
               >
                 <div className="flex items-start justify-between gap-4">
                   <p className="text-[15px] leading-snug text-pl-text">

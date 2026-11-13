@@ -6,12 +6,15 @@ export default function Loading() {
       <Eyebrow>Workspace</Eyebrow>
       <div className="mt-4 h-9 w-64 animate-pulse bg-pl-surface2" />
 
-      <div className="mt-11 space-y-px bg-pl-border">
+      <div className="mt-11 space-y-3">
         {[0, 1, 2].map((i) => (
-          <div key={i} className="flex items-center gap-6 bg-pl-surface p-5">
-            <div className="h-4 flex-1 animate-pulse bg-pl-surface2" />
-            <div className="h-4 w-16 animate-pulse bg-pl-surface2" />
-            <div className="h-4 w-20 animate-pulse bg-pl-surface2" />
+          <div
+            key={i}
+            className="flex items-center gap-6 rounded-2xl border border-pl-border bg-pl-surface p-5"
+          >
+            <div className="h-4 flex-1 animate-pulse rounded bg-pl-surface2" />
+            <div className="h-4 w-16 animate-pulse rounded bg-pl-surface2" />
+            <div className="h-4 w-20 animate-pulse rounded bg-pl-surface2" />
           </div>
         ))}
       </div>

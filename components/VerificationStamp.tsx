@@ -37,7 +37,7 @@ export function VerificationStamp({
 
   return (
     <div
-      className={`inline-flex animate-stamp select-none items-center justify-center border-[3px] px-5 py-2.5 font-mono text-xs uppercase tracking-[0.2em] ${stamp.className} ${className}`}
+      className={`inline-flex animate-stamp select-none items-center justify-center rounded-full border-[3px] px-5 py-2.5 font-mono text-xs uppercase tracking-[0.2em] ${stamp.className} ${className}`}
       role="img"
       aria-label={`Verification result: ${stamp.label}`}
     >

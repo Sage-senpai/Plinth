@@ -98,7 +98,7 @@ export default function PricingPage() {
         <Container className="relative py-20 md:py-28">
           <div className="max-w-3xl">
             <Eyebrow>Pricing</Eyebrow>
-            <h1 className="mt-6 font-serif text-4xl leading-[1.1] text-pl-text md:text-6xl">
+            <h1 className="mt-6 font-display text-4xl leading-[1.1] text-pl-text md:text-6xl">
               A report costs less than the search fee it saves you.
             </h1>
             <p className="mt-7 max-w-xl text-base leading-relaxed text-pl-muted">
@@ -109,62 +109,103 @@ export default function PricingPage() {
         </Container>
       </section>
 
-      <section className="border-b border-pl-border py-16 md:py-20">
+      <section className="py-16 md:py-20">
         <Container>
-          <div className="grid gap-px bg-pl-border md:grid-cols-2 lg:grid-cols-4">
-            {TIERS.map((tier) => (
-              <article
-                key={tier.name}
-                className={`flex flex-col bg-pl-surface p-8 ${
-                  tier.featured ? 'ring-1 ring-inset ring-pl-copper' : ''
-                }`}
-              >
-                <div className="flex items-baseline justify-between">
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {TIERS.map((tier) =>
+              tier.featured ? (
+                <article
+                  key={tier.name}
+                  className="flex flex-col rounded-2xl border border-pl-dark bg-pl-dark p-8 text-pl-cream"
+                >
+                  <div className="flex items-baseline justify-between">
+                    <h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-pl-cream">
+                      {tier.name}
+                    </h2>
+                    <span className="rounded-full border border-pl-copper-lgt/40 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-pl-copper-lgt">
+                      Most chosen
+                    </span>
+                  </div>
+
+                  <p className="mt-7 font-display text-3xl font-semibold">
+                    {tier.naira}
+                  </p>
+                  <p className="mt-1.5 font-mono text-[11px] text-pl-dark-muted">
+                    {tier.usd ? `${tier.usd} · ` : ''}
+                    {tier.cadence}
+                  </p>
+
+                  <p className="mt-6 border-t border-pl-dark-border pt-5 text-sm text-pl-copper-lgt">
+                    {tier.reports}
+                  </p>
+
+                  <ul className="mt-5 flex-1 space-y-2.5">
+                    {tier.features.map((f) => (
+                      <li
+                        key={f}
+                        className="flex gap-2.5 text-sm leading-relaxed text-pl-dark-muted"
+                      >
+                        <span className="text-pl-copper-lgt" aria-hidden>
+                          ✓
+                        </span>
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <ButtonLink
+                    href="/workspace/verify/new"
+                    variant="copper"
+                    className="mt-8 w-full"
+                  >
+                    {tier.cta}
+                  </ButtonLink>
+                </article>
+              ) : (
+                <article
+                  key={tier.name}
+                  className="flex flex-col rounded-2xl border border-pl-border bg-pl-surface p-8"
+                >
                   <h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-pl-text">
                     {tier.name}
                   </h2>
-                  {tier.featured ? (
-                    <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-pl-copper-lgt">
-                      Most chosen
-                    </span>
-                  ) : null}
-                </div>
 
-                <p className="mt-7 font-serif text-3xl text-pl-text">
-                  {tier.naira}
-                </p>
-                <p className="mt-1.5 font-mono text-[11px] text-pl-muted">
-                  {tier.usd ? `${tier.usd} · ` : ''}
-                  {tier.cadence}
-                </p>
+                  <p className="mt-7 font-display text-3xl text-pl-text">
+                    {tier.naira}
+                  </p>
+                  <p className="mt-1.5 font-mono text-[11px] text-pl-muted">
+                    {tier.usd ? `${tier.usd} · ` : ''}
+                    {tier.cadence}
+                  </p>
 
-                <p className="mt-6 border-t border-pl-border pt-5 text-sm text-pl-copper-lgt">
-                  {tier.reports}
-                </p>
+                  <p className="mt-6 border-t border-pl-border pt-5 text-sm text-pl-copper-lgt">
+                    {tier.reports}
+                  </p>
 
-                <ul className="mt-5 flex-1 space-y-2.5">
-                  {tier.features.map((f) => (
-                    <li
-                      key={f}
-                      className="flex gap-2.5 text-sm leading-relaxed text-pl-muted"
-                    >
-                      <span className="text-pl-copper" aria-hidden>
-                        ·
-                      </span>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
+                  <ul className="mt-5 flex-1 space-y-2.5">
+                    {tier.features.map((f) => (
+                      <li
+                        key={f}
+                        className="flex gap-2.5 text-sm leading-relaxed text-pl-muted"
+                      >
+                        <span className="text-pl-copper" aria-hidden>
+                          ✓
+                        </span>
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
 
-                <ButtonLink
-                  href="/workspace/verify/new"
-                  variant={tier.featured ? 'copper' : 'ghost'}
-                  className="mt-8 w-full"
-                >
-                  {tier.cta}
-                </ButtonLink>
-              </article>
-            ))}
+                  <ButtonLink
+                    href="/workspace/verify/new"
+                    variant="ghost"
+                    className="mt-8 w-full"
+                  >
+                    {tier.cta}
+                  </ButtonLink>
+                </article>
+              ),
+            )}
           </div>
         </Container>
       </section>
@@ -177,7 +218,7 @@ export default function PricingPage() {
             <div className="max-w-2xl divide-y divide-pl-border">
               {FAQ.map((item) => (
                 <div key={item.q} className="py-7 first:pt-0">
-                  <h3 className="font-serif text-xl text-pl-text">{item.q}</h3>
+                  <h3 className="font-display text-xl text-pl-text">{item.q}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-pl-muted">
                     {item.a}
                   </p>

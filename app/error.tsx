@@ -22,7 +22,7 @@ export default function Error({
         <div className="max-w-xl">
           <Eyebrow>Something failed</Eyebrow>
 
-          <h1 className="mt-6 font-serif text-4xl leading-tight text-pl-text md:text-5xl">
+          <h1 className="mt-6 font-display text-4xl leading-tight text-pl-text md:text-5xl">
             This did not work, and we are not going to pretend otherwise.
           </h1>
 
@@ -37,7 +37,7 @@ export default function Error({
           </p>
 
           {error.digest ? (
-            <p className="mt-8 border border-pl-border bg-pl-surface px-4 py-3 font-mono text-[11px] text-pl-muted">
+            <p className="mt-8 rounded-xl border border-pl-border bg-pl-surface px-4 py-3 font-mono text-[11px] text-pl-muted">
               Reference {error.digest} — quote this if you contact us.
             </p>
           ) : null}

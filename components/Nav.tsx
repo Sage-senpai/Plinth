@@ -29,7 +29,7 @@ export function Nav({ variant }: { variant: 'marketing' | 'workspace' }) {
         <div className="flex h-16 items-center justify-between">
           <Link
             href={variant === 'workspace' ? '/workspace' : '/'}
-            className="font-mono text-sm uppercase tracking-[0.3em] text-pl-text transition-colors hover:text-pl-copper-lgt"
+            className="font-display text-sm font-semibold uppercase tracking-[0.3em] text-pl-text transition-colors hover:text-pl-copper-lgt"
           >
             Proprepo
           </Link>
@@ -59,14 +59,14 @@ export function Nav({ variant }: { variant: 'marketing' | 'workspace' }) {
             {variant === 'workspace' ? (
               <Link
                 href="/workspace/verify/new"
-                className="bg-pl-copper px-4 py-2 text-sm text-white transition-colors hover:bg-pl-copper-lgt"
+                className="rounded-full bg-pl-copper px-4 py-2 text-sm text-white transition-colors hover:bg-pl-copper-lgt"
               >
                 New verification
               </Link>
             ) : (
               <Link
                 href="/workspace"
-                className="bg-pl-copper px-4 py-2 text-sm text-white transition-colors hover:bg-pl-copper-lgt"
+                className="rounded-full bg-pl-copper px-4 py-2 text-sm text-white transition-colors hover:bg-pl-copper-lgt"
               >
                 Verify a property
               </Link>
@@ -102,7 +102,7 @@ export function Nav({ variant }: { variant: 'marketing' | 'workspace' }) {
                 variant === 'workspace' ? '/workspace/verify/new' : '/workspace'
               }
               onClick={() => setOpen(false)}
-              className="mt-3 bg-pl-copper px-4 py-3 text-center text-sm text-white"
+              className="mt-3 rounded-full bg-pl-copper px-4 py-3 text-center text-sm text-white"
             >
               {variant === 'workspace'
                 ? 'New verification'

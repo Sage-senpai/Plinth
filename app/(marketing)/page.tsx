@@ -18,12 +18,12 @@ function SampleResult() {
   ];
 
   return (
-    <div className="mx-auto w-full max-w-xl border border-pl-border bg-pl-surface">
+    <div className="mx-auto w-full max-w-xl overflow-hidden rounded-2xl border border-pl-border bg-pl-surface text-left shadow-sm">
       <div className="flex items-center justify-between border-b border-pl-border px-5 py-3">
         <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-pl-muted">
           Plot 18 Orchid Road, Lekki Phase 2
         </span>
-        <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-pl-invalid">
+        <span className="rounded-full border border-pl-invalid/30 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-pl-invalid">
           Critical
         </span>
       </div>
@@ -32,7 +32,7 @@ function SampleResult() {
         {documents.map((doc) => (
           <li key={doc.label} className="flex items-center gap-4 px-5 py-4">
             <span
-              className={`flex h-7 w-7 shrink-0 items-center justify-center border text-xs ${doc.tone}`}
+              className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border text-xs ${doc.tone}`}
               aria-hidden
             >
               {doc.mark}
@@ -67,12 +67,11 @@ export default function LandingPage() {
           <div className="mx-auto max-w-4xl text-center">
             <Eyebrow>Property due diligence · Nigeria</Eyebrow>
 
-            <h1 className="mx-auto mt-8 max-w-3xl font-serif text-[2.6rem] leading-[1.08] text-pl-text sm:text-6xl md:text-7xl">
+            <h1 className="mx-auto mt-8 max-w-3xl font-display text-[2.6rem] font-semibold leading-[1.08] tracking-tight text-pl-text sm:text-6xl md:text-7xl">
               Your C of O might be real.
               <br />
-              <span className="text-pl-copper-lgt">
-                The transaction might not be.
-              </span>
+              <span className="text-pl-muted">The transaction </span>
+              <span className="text-pl-copper-lgt">might not be.</span>
             </h1>
 
             <p className="mx-auto mt-8 max-w-2xl text-base leading-relaxed text-pl-muted md:text-lg">
@@ -100,16 +99,19 @@ export default function LandingPage() {
         </Container>
       </section>
 
-      {/* Problem */}
-      <section className="border-b border-pl-border py-24 md:py-32">
+      {/* Problem — big stat callouts on full dark, for contrast */}
+      <section className="bg-pl-dark py-24 text-pl-cream md:py-32">
         <Container>
-          <div className="grid gap-14 text-center md:grid-cols-3 md:gap-8">
+          <Eyebrow className="pl-eyebrow-on-dark justify-center md:justify-start">
+            The scale of the problem
+          </Eyebrow>
+          <div className="mt-10 grid gap-14 text-center md:grid-cols-3 md:gap-8">
             {PROBLEM.map((item) => (
               <div key={item.figure}>
-                <p className="font-serif text-5xl text-pl-copper-lgt md:text-6xl">
+                <p className="font-display text-5xl font-semibold text-pl-copper-lgt md:text-6xl">
                   {item.figure}
                 </p>
-                <p className="mx-auto mt-4 max-w-[15rem] text-sm leading-relaxed text-pl-muted">
+                <p className="mx-auto mt-4 max-w-[15rem] text-sm leading-relaxed text-pl-dark-muted">
                   {item.body}
                 </p>
               </div>
@@ -124,14 +126,14 @@ export default function LandingPage() {
 
         <Container className="relative">
           <Eyebrow>What Proprepo does</Eyebrow>
-          <h2 className="mt-5 max-w-2xl font-serif text-3xl leading-tight text-pl-text md:text-5xl">
+          <h2 className="mt-5 max-w-2xl font-display text-3xl leading-tight text-pl-text md:text-5xl">
             It reads a document the way a forger reads it.
           </h2>
 
-          <div className="mt-14 grid gap-px bg-pl-border md:grid-cols-3">
-            <article className="bg-pl-surface p-8 md:col-span-2 md:p-10">
+          <div className="mt-14 grid gap-5 md:grid-cols-3">
+            <article className="rounded-2xl border border-pl-border bg-pl-surface p-8 md:col-span-2 md:p-10">
               <Eyebrow>Document verification</Eyebrow>
-              <h3 className="mt-4 font-serif text-2xl text-pl-text md:text-3xl">
+              <h3 className="mt-4 font-display text-2xl text-pl-text md:text-3xl">
                 Every document, cross-checked against every other.
               </h3>
               <p className="mt-4 max-w-xl text-sm leading-relaxed text-pl-muted">
@@ -141,7 +143,7 @@ export default function LandingPage() {
                 a deed signed before the C of O it relies on.
               </p>
 
-              <div className="mt-8 border-l-2 border-l-pl-flagged bg-pl-surface2 p-5">
+              <div className="mt-8 rounded-xl border-l-2 border-l-pl-flagged bg-pl-surface2 p-5">
                 <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-pl-flagged">
                   Major · Inconsistency · Governor&apos;s consent
                 </p>
@@ -153,9 +155,9 @@ export default function LandingPage() {
               </div>
             </article>
 
-            <article className="bg-pl-surface p-8 md:p-10">
+            <article className="rounded-2xl border border-pl-border bg-pl-surface p-8 md:p-10">
               <Eyebrow>AI valuation</Eyebrow>
-              <h3 className="mt-4 font-serif text-2xl text-pl-text">
+              <h3 className="mt-4 font-display text-2xl text-pl-text">
                 What it is actually worth.
               </h3>
               <p className="mt-4 text-sm leading-relaxed text-pl-muted">
@@ -167,8 +169,8 @@ export default function LandingPage() {
                 <p className="font-mono text-2xl text-pl-copper-lgt">
                   ₦198,000,000
                 </p>
-                <div className="mt-4 h-[3px] w-full bg-pl-border">
-                  <div className="h-full w-[62%] bg-pl-copper" />
+                <div className="mt-4 h-[3px] w-full rounded-full bg-pl-border">
+                  <div className="h-full w-[62%] rounded-full bg-pl-copper" />
                 </div>
                 <p className="mt-3 font-mono text-[11px] text-pl-muted">
                   ₦172,000,000 — ₦231,000,000
@@ -176,9 +178,9 @@ export default function LandingPage() {
               </div>
             </article>
 
-            <article className="bg-pl-surface p-8 md:p-10">
+            <article className="rounded-2xl border border-pl-border bg-pl-surface p-8 md:p-10">
               <Eyebrow>Plain English reports</Eyebrow>
-              <h3 className="mt-4 font-serif text-2xl text-pl-text">
+              <h3 className="mt-4 font-display text-2xl text-pl-text">
                 Not just flags.
               </h3>
               <p className="mt-4 text-sm leading-relaxed text-pl-muted">
@@ -187,9 +189,9 @@ export default function LandingPage() {
               </p>
             </article>
 
-            <article className="bg-pl-surface p-8 md:col-span-2 md:p-10">
+            <article className="rounded-2xl border border-pl-border bg-pl-surface p-8 md:col-span-2 md:p-10">
               <Eyebrow>One-click PDF</Eyebrow>
-              <h3 className="mt-4 font-serif text-2xl text-pl-text md:text-3xl">
+              <h3 className="mt-4 font-display text-2xl text-pl-text md:text-3xl">
                 Download your report. Hand it to your lawyer.
               </h3>
               <p className="mt-4 max-w-lg text-sm leading-relaxed text-pl-muted">
@@ -207,7 +209,7 @@ export default function LandingPage() {
         <Container>
           <div className="max-w-2xl">
             <Eyebrow>Who built this</Eyebrow>
-            <h2 className="mt-5 font-serif text-3xl leading-tight text-pl-text md:text-5xl">
+            <h2 className="mt-5 font-display text-3xl leading-tight text-pl-text md:text-5xl">
               We have been on both sides of this problem.
             </h2>
           </div>
@@ -220,7 +222,7 @@ export default function LandingPage() {
                   alt={`${f.name}, ${f.role}`}
                   width={64}
                   height={64}
-                  className="h-16 w-16 shrink-0 object-cover object-top grayscale"
+                  className="h-16 w-16 shrink-0 rounded-full object-cover object-top grayscale"
                 />
                 <div>
                   <p className="text-[15px] text-pl-text">{f.name}</p>
@@ -234,7 +236,7 @@ export default function LandingPage() {
           </div>
 
           <blockquote className="mt-16 max-w-3xl border-l-2 border-l-pl-copper pl-6 md:pl-8">
-            <p className="font-serif text-xl leading-relaxed text-pl-text md:text-2xl">
+            <p className="font-display text-xl leading-relaxed text-pl-text md:text-2xl">
               In February 2024 a client of mine lost ₦18 million on a plot in
               Lekki Phase 2. The Certificate of Occupancy was genuine — the
               governor&apos;s consent had been forged, and the seller had
@@ -254,16 +256,16 @@ export default function LandingPage() {
         </Container>
       </section>
 
-      {/* Testimonial */}
-      <section className="border-b border-pl-border bg-pl-surface py-24 md:py-28">
+      {/* Testimonial — full dark, for drama */}
+      <section className="bg-pl-dark py-24 text-pl-cream md:py-28">
         <Container>
           <blockquote className="mx-auto max-w-3xl text-center">
-            <p className="font-serif text-2xl leading-relaxed text-pl-text md:text-4xl md:leading-[1.35]">
+            <p className="font-display text-2xl leading-relaxed md:text-4xl md:leading-[1.35]">
               “Proprepo found a date inconsistency on the deed that our estate
               agent had missed. That inconsistency saved us from what turned out
               to be a double-sale case.”
             </p>
-            <footer className="pl-eyebrow mt-8">
+            <footer className="pl-eyebrow pl-eyebrow-on-dark mt-8 justify-center">
               Buyer, Lekki, Lagos · Beta participant
             </footer>
           </blockquote>
@@ -271,16 +273,17 @@ export default function LandingPage() {
       </section>
 
       <PlatformSection />
-      {/* CTA */}
-      <section className="bg-pl-copper py-20 md:py-24">
+      {/* CTA — full dark, copper pops against it */}
+      <section className="bg-pl-dark py-20 text-pl-cream md:py-24">
         <Container>
           <div className="flex flex-col items-start justify-between gap-9 md:flex-row md:items-center">
-            <h2 className="max-w-xl font-serif text-3xl leading-tight text-[#1A0E03] md:text-4xl">
-              Run your first verification before you commit to anything.
+            <h2 className="max-w-xl font-display text-3xl leading-tight md:text-4xl">
+              Run your first verification before you commit to{' '}
+              <span className="text-pl-dark-muted">anything.</span>
             </h2>
             <ButtonLink
               href="/workspace/verify/new"
-              variant="dark"
+              variant="copper"
               className="shrink-0"
             >
               Start Verifying

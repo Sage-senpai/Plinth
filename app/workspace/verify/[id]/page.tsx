@@ -78,7 +78,7 @@ export default async function VerificationDetailPage({
       <div className="flex flex-col justify-between gap-8 border-b border-pl-border pb-10 md:flex-row md:items-start">
         <div>
           <Eyebrow>Verification</Eyebrow>
-          <h1 className="mt-4 max-w-2xl font-serif text-3xl leading-tight text-pl-text md:text-4xl">
+          <h1 className="mt-4 max-w-2xl font-display text-3xl leading-tight text-pl-text md:text-4xl">
             {property?.address ?? 'Unnamed property'}
           </h1>
           <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.14em] text-pl-muted">
@@ -98,9 +98,12 @@ export default async function VerificationDetailPage({
         <aside className="lg:order-1">
           <Eyebrow>Documents</Eyebrow>
 
-          <ul className="mt-4 space-y-px bg-pl-border">
+          <ul className="mt-4 space-y-3">
             {verification.documents.map((doc) => (
-              <li key={doc.s3Key} className="bg-pl-surface p-4">
+              <li
+                key={doc.s3Key}
+                className="rounded-xl border border-pl-border bg-pl-surface p-4"
+              >
                 <p className="text-sm leading-snug text-pl-text">
                   {documentLabel(doc.type)}
                 </p>
@@ -124,7 +127,7 @@ export default async function VerificationDetailPage({
         {/* Summary + flags */}
         <div className="lg:order-2">
           <Eyebrow>Summary</Eyebrow>
-          <p className="mt-4 font-serif text-lg leading-relaxed text-pl-text md:text-xl md:leading-relaxed">
+          <p className="mt-4 font-display text-lg leading-relaxed text-pl-text md:text-xl md:leading-relaxed">
             {verification.summary ||
               'Verification is still running. The summary appears here when it completes.'}
           </p>
@@ -135,13 +138,13 @@ export default async function VerificationDetailPage({
             </Eyebrow>
 
             {flags.length ? (
-              <div className="mt-4 space-y-px bg-pl-border">
+              <div className="mt-4 space-y-3">
                 {flags.map((flag, i) => (
                   <DocumentFlag key={`${flag.fieldAffected}-${i}`} {...flag} />
                 ))}
               </div>
             ) : (
-              <p className="mt-4 border border-dashed border-pl-border p-8 text-sm leading-relaxed text-pl-muted">
+              <p className="mt-4 rounded-2xl border border-dashed border-pl-border p-8 text-sm leading-relaxed text-pl-muted">
                 No flags were raised against these documents. That is not a
                 guarantee of clear title — it means nothing in the papers
                 contradicts itself or the registry formats we check against.
@@ -152,7 +155,7 @@ export default async function VerificationDetailPage({
           {valuation ? (
             <div className="mt-14">
               <Eyebrow>Valuation</Eyebrow>
-              <div className="mt-5 border border-pl-border bg-pl-surface p-6 md:p-8">
+              <div className="mt-5 rounded-2xl border border-pl-border bg-pl-surface p-6 md:p-8">
                 <ValuationRange
                   low={valuation.rangeLow}
                   high={valuation.rangeHigh}
@@ -166,12 +169,12 @@ export default async function VerificationDetailPage({
           ) : null}
         </div>
 
-        {/* Risk panel */}
+        {/* Risk panel — the verdict, set apart on full dark */}
         <aside className="space-y-8 lg:order-3">
-          <div className="border border-pl-border bg-pl-surface p-6">
-            <Eyebrow>Overall risk</Eyebrow>
+          <div className="rounded-2xl border border-pl-dark bg-pl-dark p-6 text-pl-cream">
+            <Eyebrow className="pl-eyebrow-on-dark">Overall risk</Eyebrow>
             <p
-              className={`mt-3 font-serif text-3xl capitalize ${
+              className={`mt-3 font-display text-3xl font-semibold capitalize ${
                 verification.overallRisk === 'low'
                   ? 'text-pl-verified'
                   : verification.overallRisk === 'moderate'
@@ -183,11 +186,11 @@ export default async function VerificationDetailPage({
             </p>
 
             <div className="mt-7">
-              <ConfidenceBar value={confidence} label="Extraction confidence" />
+              <ConfidenceBar value={confidence} label="Extraction confidence" onDark />
             </div>
 
             {worstDoc ? (
-              <p className="mt-6 border-t border-pl-border pt-5 text-xs leading-relaxed text-pl-muted">
+              <p className="mt-6 border-t border-pl-dark-border pt-5 text-xs leading-relaxed text-pl-dark-muted">
                 Driven by the {documentLabel(worstDoc.type).toLowerCase()}.
               </p>
             ) : null}

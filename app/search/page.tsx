@@ -73,21 +73,21 @@ export default async function SearchPage({
           <Container className="relative py-16 md:py-24">
             <div className="max-w-2xl">
               <Eyebrow>Search</Eyebrow>
-              <h1 className="mt-5 font-serif text-3xl leading-tight text-pl-text md:text-5xl">
+              <h1 className="mt-5 font-display text-3xl leading-tight text-pl-text md:text-5xl">
                 Look up a property, a report, or a street.
               </h1>
 
-              <form action="/search" method="get" className="mt-9 flex gap-px">
+              <form action="/search" method="get" className="mt-9 flex gap-2">
                 <input
                   name="q"
                   defaultValue={q}
                   placeholder="Lekki Phase 2, Ikoyi, ver_9f2c41a8…"
                   aria-label="Search properties, reports and sales"
-                  className="w-full border border-pl-border bg-pl-surface px-4 py-3.5 text-sm text-pl-text outline-none transition-colors placeholder:text-pl-muted focus:border-pl-copper"
+                  className="w-full rounded-full border border-pl-border bg-pl-surface px-5 py-3.5 text-sm text-pl-text outline-none transition-colors placeholder:text-pl-muted focus:border-pl-copper"
                 />
                 <button
                   type="submit"
-                  className="shrink-0 bg-pl-copper px-7 text-sm text-white transition-colors hover:bg-pl-copper-lgt"
+                  className="shrink-0 rounded-full bg-pl-copper px-7 text-sm text-white transition-colors hover:bg-pl-copper-lgt"
                 >
                   Search
                 </button>
@@ -112,7 +112,7 @@ export default async function SearchPage({
                     <Link
                       key={term}
                       href={`/search?q=${encodeURIComponent(term)}`}
-                      className="border border-pl-border px-3.5 py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-pl-muted transition-colors hover:border-pl-copper hover:text-pl-copper-lgt"
+                      className="rounded-full border border-pl-border px-3.5 py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-pl-muted transition-colors hover:border-pl-copper hover:text-pl-copper-lgt"
                     >
                       {term}
                     </Link>
@@ -140,9 +140,12 @@ export default async function SearchPage({
           {matchedAreas.length ? (
             <section className="mb-16">
               <Eyebrow>Areas · {matchedAreas.length}</Eyebrow>
-              <div className="mt-5 grid gap-px bg-pl-border sm:grid-cols-2 lg:grid-cols-4">
+              <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {matchedAreas.map((area) => (
-                  <div key={area.code} className="bg-pl-surface p-5">
+                  <div
+                    key={area.code}
+                    className="rounded-2xl border border-pl-border bg-pl-surface p-5"
+                  >
                     <p className="text-[15px] text-pl-text">{area.name}</p>
                     <p className="pl-eyebrow mt-1.5">
                       {area.code} · {area.state}
@@ -159,12 +162,12 @@ export default async function SearchPage({
           {matchedProperties.length ? (
             <section className="mb-16">
               <Eyebrow>Reports · {matchedProperties.length}</Eyebrow>
-              <ul className="mt-5 space-y-px bg-pl-border">
+              <ul className="mt-5 space-y-3">
                 {matchedProperties.map(({ verification, address }) => (
                   <li key={verification.id}>
                     <Link
                       href={`/workspace/verify/${verification.id}`}
-                      className="flex flex-col gap-3 bg-pl-surface p-5 transition-colors hover:bg-pl-surface2 sm:flex-row sm:items-center sm:justify-between"
+                      className="flex flex-col gap-3 rounded-2xl border border-pl-border bg-pl-surface p-5 transition-colors hover:border-pl-border-h hover:bg-pl-surface2 sm:flex-row sm:items-center sm:justify-between"
                     >
                       <span>
                         <span className="block text-[15px] text-pl-text">
@@ -186,7 +189,7 @@ export default async function SearchPage({
           {matchedSales.length ? (
             <section>
               <Eyebrow>Recorded sales · {matchedSales.length}</Eyebrow>
-              <div className="mt-5 flex gap-px overflow-x-auto bg-pl-border pb-1">
+              <div className="mt-5 flex gap-4 overflow-x-auto pb-1">
                 {matchedSales.map((sale) => (
                   <ComparableCard
                     key={sale.id}

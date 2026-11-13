@@ -9,7 +9,7 @@ export default function NewVerificationPage() {
     <Container className="py-12 md:py-16">
       <div className="max-w-2xl">
         <Eyebrow>New verification</Eyebrow>
-        <h1 className="mt-4 font-serif text-3xl text-pl-text md:text-4xl">
+        <h1 className="mt-4 font-display text-3xl text-pl-text md:text-4xl">
           Tell us about the property.
         </h1>
         <p className="mt-4 text-sm leading-relaxed text-pl-muted">

@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useRef, useState } from 'react';
-import { Button, Eyebrow } from '@/components/ui';
+import { Button, Eyebrow, StepBadge } from '@/components/ui';
 import { DOCUMENT_TYPES, guessDocumentType } from '@/lib/property/documents';
 import { STATES } from '@/lib/property/areas';
 import type { DocumentType, PropertyType } from '@/lib/types';
@@ -117,13 +117,13 @@ export function VerifyWizard() {
   }
 
   const field =
-    'w-full border border-pl-border bg-pl-surface px-4 py-3 text-sm text-pl-text outline-none transition-colors placeholder:text-pl-muted focus:border-pl-copper';
+    'w-full rounded-xl border border-pl-border bg-pl-surface px-4 py-3 text-sm text-pl-text outline-none transition-colors placeholder:text-pl-muted focus:border-pl-copper';
   const label = 'mb-2 block font-mono text-[10px] uppercase tracking-[0.18em] text-pl-muted';
 
   return (
     <div className="mt-12 max-w-2xl">
       {/* Steps */}
-      <ol className="mb-10 flex gap-8 border-b border-pl-border pb-4">
+      <ol className="mb-10 flex gap-8 border-b border-pl-border pb-5">
         {(
           [
             [1, 'Property'],
@@ -131,14 +131,8 @@ export function VerifyWizard() {
           ] as const
         ).map(([n, title]) => (
           <li key={n} className="flex items-center gap-2.5">
-            <span
-              className={`flex h-6 w-6 items-center justify-center border font-mono text-[10px] ${
-                step === n
-                  ? 'border-pl-copper text-pl-copper-lgt'
-                  : 'border-pl-border text-pl-muted'
-              }`}
-            >
-              {n}
+            <span className={step === n ? '' : 'opacity-50'}>
+              <StepBadge n={n} />
             </span>
             <span
               className={`text-sm ${
@@ -249,7 +243,7 @@ export function VerifyWizard() {
               type="button"
               onClick={() => fileInput.current?.click()}
               disabled={docs.length >= MAX_DOCS}
-              className="mt-3 w-full border border-dashed border-pl-border px-6 py-10 text-center transition-colors hover:border-pl-copper disabled:cursor-not-allowed disabled:opacity-40"
+              className="mt-3 w-full rounded-2xl border border-dashed border-pl-border px-6 py-10 text-center transition-colors hover:border-pl-copper disabled:cursor-not-allowed disabled:opacity-40"
             >
               <span className="block text-sm text-pl-text">
                 Choose documents
@@ -274,11 +268,11 @@ export function VerifyWizard() {
           </div>
 
           {docs.length ? (
-            <ul className="space-y-px bg-pl-border">
+            <ul className="space-y-3">
               {docs.map((doc, i) => (
                 <li
                   key={`${doc.file.name}-${i}`}
-                  className="flex flex-col gap-3 bg-pl-surface p-4 sm:flex-row sm:items-center"
+                  className="flex flex-col gap-3 rounded-xl border border-pl-border bg-pl-surface p-4 sm:flex-row sm:items-center"
                 >
                   <span className="flex-1 truncate text-sm text-pl-text">
                     {doc.file.name}
@@ -286,7 +280,7 @@ export function VerifyWizard() {
 
                   <select
                     aria-label={`Document type for ${doc.file.name}`}
-                    className="border border-pl-border bg-pl-surface2 px-3 py-2 text-xs text-pl-text outline-none focus:border-pl-copper"
+                    className="rounded-full border border-pl-border bg-pl-surface2 px-3 py-2 text-xs text-pl-text outline-none focus:border-pl-copper"
                     value={doc.type}
                     onChange={(e) =>
                       setDocs((current) =>
@@ -327,7 +321,7 @@ export function VerifyWizard() {
           ) : null}
 
           {error ? (
-            <p className="border-l-2 border-l-pl-invalid bg-pl-surface px-4 py-3 text-sm text-pl-invalid">
+            <p className="rounded-xl border-l-2 border-l-pl-invalid bg-pl-surface px-4 py-3 text-sm text-pl-invalid">
               {error}
             </p>
           ) : null}
