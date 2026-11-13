@@ -39,7 +39,7 @@ export function SignInForm() {
   }
 
   const field =
-    'w-full rounded-xl border border-pl-border bg-pl-surface px-4 py-3 text-sm text-pl-text outline-none transition-colors placeholder:text-pl-muted focus:border-pl-copper';
+    'w-full border border-pl-border bg-pl-surface px-4 py-3 text-sm text-pl-text outline-none transition-colors placeholder:text-pl-muted focus:border-pl-copper';
   const label =
     'mb-2 block font-mono text-[10px] uppercase tracking-[0.18em] text-pl-muted';
 
@@ -75,7 +75,7 @@ export function SignInForm() {
       </div>
 
       {error ? (
-        <p className="rounded-xl border-l-2 border-l-pl-invalid bg-pl-surface px-4 py-3 text-sm leading-relaxed text-pl-invalid">
+        <p className="border-l-2 border-l-pl-invalid bg-pl-surface px-4 py-3 text-sm leading-relaxed text-pl-invalid">
           {error}
         </p>
       ) : null}

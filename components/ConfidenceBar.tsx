@@ -6,12 +6,10 @@ import { useEffect, useRef, useState } from 'react';
 export function ConfidenceBar({
   value,
   label = 'Confidence',
-  onDark = false,
 }: {
   /** 0.0 - 1.0 */
   value: number;
   label?: string;
-  onDark?: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [shown, setShown] = useState(false);
@@ -38,19 +36,13 @@ export function ConfidenceBar({
   return (
     <div ref={ref}>
       <div className="mb-2 flex items-baseline justify-between">
-        <span
-          className={`font-mono text-[10px] uppercase tracking-[0.18em] ${
-            onDark ? 'text-pl-dark-muted' : 'text-pl-muted'
-          }`}
-        >
+        <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-pl-muted">
           {label}
         </span>
-        <span className={`font-mono text-xs ${onDark ? 'text-pl-cream' : 'text-pl-text'}`}>
-          {pct}%
-        </span>
+        <span className="font-mono text-xs text-pl-text">{pct}%</span>
       </div>
       <div
-        className={`h-[3px] w-full rounded-full ${onDark ? 'bg-pl-dark-border' : 'bg-pl-border'}`}
+        className="h-[3px] w-full bg-pl-border"
         role="meter"
         aria-valuenow={pct}
         aria-valuemin={0}
@@ -58,7 +50,7 @@ export function ConfidenceBar({
         aria-label={label}
       >
         <div
-          className="h-full rounded-full bg-pl-blue-lgt transition-[width] duration-700 ease-out"
+          className="h-full bg-pl-blue-lgt transition-[width] duration-700 ease-out"
           style={{ width: shown ? `${pct}%` : '0%' }}
         />
       </div>

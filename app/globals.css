@@ -3,40 +3,32 @@
 @tailwind utilities;
 
 :root {
-  /* Primary light surface — warm cream, near-black text */
-  --pl-bg: #f2f0eb;
-  --pl-surface: #ffffff;
-  --pl-surface-2: #eae6dc;
-  --pl-border: #dbd5c7;
-  --pl-border-h: #0d1411;
+  --pl-bg: #080705;
+  --pl-surface: #100f0c;
+  --pl-surface-2: #18160f;
+  --pl-border: #28241c;
+  --pl-border-h: #3d3828;
 
-  /* Full dark contrast sections */
-  --pl-dark: #0d1411;
-  --pl-dark-surface: #161c18;
-  --pl-dark-border: #2b332c;
-  --pl-cream: #f2f0eb;
-  --pl-dark-muted: #9a958a;
-
-  /* Brand accent: copper / brick — used sparingly */
+  /* Primary: Copper / brick */
   --pl-copper: #b45309;
   --pl-copper-lgt: #d97706;
-  --pl-copper-dim: rgba(180, 83, 9, 0.1);
+  --pl-copper-dim: rgba(180, 83, 9, 0.12);
 
-  /* Structural accent: blue, for processing / confidence states only */
+  /* Accent: Structural blue */
   --pl-blue: #1e40af;
   --pl-blue-lgt: #2563eb;
-  --pl-blue-dim: rgba(30, 64, 175, 0.1);
+  --pl-blue-dim: rgba(30, 64, 175, 0.12);
 
   /* Verification states */
-  --pl-verified: #15803d;
-  --pl-flagged: #c2410c;
-  --pl-invalid: #b91c1c;
-  --pl-pending: #52525b;
+  --pl-verified: #22c55e;
+  --pl-flagged: #f59e0b;
+  --pl-invalid: #dc2626;
+  --pl-pending: #94a3b8;
 
   /* Typography */
-  --pl-text: #0d1411;
-  --pl-muted: #5b5650;
-  --pl-faint: #dbd5c7;
+  --pl-text: #ede8e3;
+  --pl-muted: #78716c;
+  --pl-faint: #28241c;
 
   --pl-glow-copper: 0 0 22px rgba(180, 83, 9, 0.22);
   --pl-glow-blue: 0 0 18px rgba(30, 64, 175, 0.18);
@@ -50,7 +42,7 @@
   body {
     background-color: var(--pl-bg);
     color: var(--pl-text);
-    font-family: var(--font-body), 'Instrument Sans', sans-serif;
+    font-family: var(--font-body), 'Jost', sans-serif;
     font-weight: 400;
   }
 
@@ -66,19 +58,11 @@
 }
 
 @layer components {
-  /* Technical-drawing grid: 1px lines at low opacity, for light sections */
+  /* Technical-drawing grid: 1px lines at 4% opacity */
   .pl-grid {
     background-image:
-      linear-gradient(to right, rgba(13, 20, 17, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(13, 20, 17, 0.05) 1px, transparent 1px);
-    background-size: 64px 64px;
-  }
-
-  /* Same grid, inverted for use on full-dark sections */
-  .pl-grid-dark {
-    background-image:
-      linear-gradient(to right, rgba(242, 240, 235, 0.06) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(242, 240, 235, 0.06) 1px, transparent 1px);
+      linear-gradient(to right, rgba(237, 232, 227, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(237, 232, 227, 0.04) 1px, transparent 1px);
     background-size: 64px 64px;
   }
 
@@ -90,59 +74,12 @@
     border-color: var(--pl-border);
   }
 
-  /* Uppercase, tracked-out eyebrow label with a small accent mark */
   .pl-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5em;
     font-family: var(--font-mono), monospace;
     font-size: 0.6875rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--pl-muted);
-  }
-
-  .pl-eyebrow::before {
-    content: '';
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    border-radius: 999px;
-    background: var(--pl-copper);
-    flex-shrink: 0;
-  }
-
-  .pl-eyebrow-light::before {
-    background: var(--pl-copper-lgt);
-  }
-
-  /* Eyebrow variant for use inside full-dark sections */
-  .pl-eyebrow-on-dark {
-    color: var(--pl-dark-muted);
-  }
-
-  .pl-eyebrow-on-dark::before {
-    background: var(--pl-copper-lgt);
-  }
-
-  /* A numbered step badge — 01, 02, 03… */
-  .pl-step {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.25rem;
-    height: 2.25rem;
-    border-radius: 999px;
-    border: 1px solid var(--pl-copper);
-    font-family: var(--font-mono), monospace;
-    font-size: 0.6875rem;
-    color: var(--pl-copper);
-    flex-shrink: 0;
-  }
-
-  .pl-step-on-dark {
-    border-color: var(--pl-copper-lgt);
-    color: var(--pl-copper-lgt);
   }
 }
 

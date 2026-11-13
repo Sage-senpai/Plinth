@@ -15,14 +15,14 @@ export default function SignInPage() {
         <div className="mx-auto max-w-sm">
           <Link
             href="/"
-            className="font-display text-sm font-semibold uppercase tracking-[0.3em] text-pl-text transition-colors hover:text-pl-copper-lgt"
+            className="font-mono text-sm uppercase tracking-[0.3em] text-pl-text transition-colors hover:text-pl-copper-lgt"
           >
             Proprepo
           </Link>
 
           <div className="mt-10">
             <Eyebrow>Sign in</Eyebrow>
-            <h1 className="mt-4 font-display text-3xl text-pl-text">
+            <h1 className="mt-4 font-serif text-3xl text-pl-text">
               Your verifications.
             </h1>
           </div>

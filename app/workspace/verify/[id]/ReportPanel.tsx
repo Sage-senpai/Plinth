@@ -61,7 +61,7 @@ export function ReportPanel({
 
   if (status !== 'complete') {
     return (
-      <p className="rounded-xl border border-pl-border bg-pl-surface px-4 py-3 text-xs leading-relaxed text-pl-muted">
+      <p className="border border-pl-border bg-pl-surface px-4 py-3 text-xs leading-relaxed text-pl-muted">
         {status === 'failed'
           ? 'This verification failed. Re-upload the documents and try again.'
           : 'Verification is running. This page will update on its own — about six minutes for five documents.'}

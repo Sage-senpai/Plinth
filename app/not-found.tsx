@@ -9,7 +9,7 @@ export default function NotFound() {
         <div className="max-w-xl">
           <Eyebrow>404</Eyebrow>
 
-          <h1 className="mt-6 font-display text-4xl leading-tight text-pl-text md:text-5xl">
+          <h1 className="mt-6 font-serif text-4xl leading-tight text-pl-text md:text-5xl">
             There is nothing at this address.
           </h1>
 

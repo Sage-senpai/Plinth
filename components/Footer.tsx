@@ -7,7 +7,7 @@ export function Footer() {
       <Container>
         <div className="flex flex-col justify-between gap-10 md:flex-row">
           <div className="max-w-sm">
-            <p className="font-display text-sm font-semibold uppercase tracking-[0.3em] text-pl-text">
+            <p className="font-mono text-sm uppercase tracking-[0.3em] text-pl-text">
               Proprepo
             </p>
             <p className="mt-4 text-sm leading-relaxed text-pl-muted">

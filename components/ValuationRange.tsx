@@ -46,7 +46,7 @@ export function ValuationRange({
 
   return (
     <div ref={ref}>
-      <p className="font-display text-4xl text-pl-text md:text-5xl">
+      <p className="font-serif text-4xl text-pl-text md:text-5xl">
         {formatNaira(estimated)}
       </p>
 

@@ -31,7 +31,7 @@ export default async function ComparablesPage() {
     <Container className="py-12 md:py-16">
       <div className="max-w-2xl">
         <Eyebrow>Comparables</Eyebrow>
-        <h1 className="mt-4 font-display text-3xl text-pl-text md:text-4xl">
+        <h1 className="mt-4 font-serif text-3xl text-pl-text md:text-4xl">
           What actually sold, and for how much.
         </h1>
         <p className="mt-4 text-sm leading-relaxed text-pl-muted">
@@ -50,7 +50,7 @@ export default async function ComparablesPage() {
             <section key={area.code}>
               <div className="flex flex-wrap items-baseline justify-between gap-3 border-b border-pl-border pb-4">
                 <div className="flex items-baseline gap-4">
-                  <h2 className="font-display text-xl text-pl-text md:text-2xl">
+                  <h2 className="font-serif text-xl text-pl-text md:text-2xl">
                     {area.name}
                   </h2>
                   <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-pl-muted">
@@ -68,7 +68,7 @@ export default async function ComparablesPage() {
                 ) : null}
               </div>
 
-              <div className="mt-6 flex gap-4 overflow-x-auto pb-1">
+              <div className="mt-6 flex gap-px overflow-x-auto bg-pl-border pb-1">
                 {sales.map((sale) => (
                   <ComparableCard
                     key={sale.id}

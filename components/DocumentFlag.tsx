@@ -50,7 +50,7 @@ export function DocumentFlag({
   const s = SEVERITY[severity];
 
   return (
-    <div className={`overflow-hidden rounded-xl border-l-2 bg-pl-surface ${s.border}`}>
+    <div className={`border-l-2 bg-pl-surface ${s.border}`}>
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}

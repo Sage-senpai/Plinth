@@ -1,16 +1,16 @@
 import type { Metadata } from 'next';
-import { Bricolage_Grotesque, Instrument_Sans, Martian_Mono } from 'next/font/google';
+import { DM_Serif_Display, Jost, Martian_Mono } from 'next/font/google';
 import { SITE_URL } from '@/lib/site';
 import './globals.css';
 
-const display = Bricolage_Grotesque({
-  weight: ['500', '600', '700', '800'],
+const display = DM_Serif_Display({
+  weight: '400',
   subsets: ['latin'],
   variable: '--font-display',
   display: 'swap',
 });
 
-const body = Instrument_Sans({
+const body = Jost({
   weight: ['400', '500', '600'],
   subsets: ['latin'],
   variable: '--font-body',
