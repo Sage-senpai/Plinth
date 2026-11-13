@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { ButtonLink, Container, Eyebrow } from '@/components/ui';
+import { Reveal, RevealItem, RevealStagger, StickyStack, StickyStackCard } from '@/components/motion';
 import { TEAM } from '@/lib/team';
 import { PlatformSection } from '@/components/PlatformSection'
 
@@ -70,7 +71,7 @@ export default function LandingPage() {
             <h1 className="mx-auto mt-8 max-w-3xl font-serif text-[2.6rem] leading-[1.08] text-pl-text sm:text-6xl md:text-7xl">
               Your C of O might be real.
               <br />
-              <span className="text-pl-copper-lgt">
+              <span className="font-normal text-pl-muted">
                 The transaction might not be.
               </span>
             </h1>
@@ -93,28 +94,36 @@ export default function LandingPage() {
               </ButtonLink>
             </div>
 
-            <div className="mt-20">
+            <Reveal className="mt-20" delay={0.1}>
               <SampleResult />
-            </div>
+            </Reveal>
           </div>
         </Container>
       </section>
 
-      {/* Problem */}
+      {/* Problem — sticky stack, each stat covers the last as you scroll */}
       <section className="border-b border-pl-border py-24 md:py-32">
         <Container>
-          <div className="grid gap-14 text-center md:grid-cols-3 md:gap-8">
-            {PROBLEM.map((item) => (
-              <div key={item.figure}>
-                <p className="font-serif text-5xl text-pl-copper-lgt md:text-6xl">
-                  {item.figure}
-                </p>
-                <p className="mx-auto mt-4 max-w-[15rem] text-sm leading-relaxed text-pl-muted">
-                  {item.body}
-                </p>
-              </div>
-            ))}
-          </div>
+          <Eyebrow>The scale of the problem</Eyebrow>
+
+          <StickyStack className="mt-10">
+            <div className="space-y-6">
+              {PROBLEM.map((item, i) => (
+                <StickyStackCard
+                  key={item.figure}
+                  index={i}
+                  className="border border-pl-border bg-pl-surface px-8 py-16 text-center md:py-20"
+                >
+                  <p className="font-serif text-6xl text-pl-copper-lgt md:text-7xl">
+                    {item.figure}
+                  </p>
+                  <p className="mx-auto mt-5 max-w-sm text-base leading-relaxed text-pl-muted">
+                    {item.body}
+                  </p>
+                </StickyStackCard>
+              ))}
+            </div>
+          </StickyStack>
         </Container>
       </section>
 
@@ -123,98 +132,108 @@ export default function LandingPage() {
         <div className="pl-grid absolute inset-0 opacity-60" aria-hidden />
 
         <Container className="relative">
-          <Eyebrow>What Proprepo does</Eyebrow>
-          <h2 className="mt-5 max-w-2xl font-serif text-3xl leading-tight text-pl-text md:text-5xl">
-            It reads a document the way a forger reads it.
-          </h2>
+          <Reveal>
+            <Eyebrow>What Proprepo does</Eyebrow>
+            <h2 className="mt-5 max-w-2xl font-serif text-3xl leading-tight text-pl-text md:text-5xl">
+              It reads a document the way a forger reads it.
+            </h2>
+          </Reveal>
 
-          <div className="mt-14 grid gap-px bg-pl-border md:grid-cols-3">
-            <article className="bg-pl-surface p-8 md:col-span-2 md:p-10">
-              <Eyebrow>Document verification</Eyebrow>
-              <h3 className="mt-4 font-serif text-2xl text-pl-text md:text-3xl">
-                Every document, cross-checked against every other.
-              </h3>
-              <p className="mt-4 max-w-xl text-sm leading-relaxed text-pl-muted">
-                Textract extracts the structure. Bedrock checks it against the
-                fraud patterns that actually occur here — forged consent
-                endorsements, beacon numbers that don&apos;t match the address,
-                a deed signed before the C of O it relies on.
-              </p>
-
-              <div className="mt-8 border-l-2 border-l-pl-flagged bg-pl-surface2 p-5">
-                <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-pl-flagged">
-                  Major · Inconsistency · Governor&apos;s consent
+          <RevealStagger className="mt-14 grid gap-px bg-pl-border md:grid-cols-3">
+            <RevealItem className="bg-pl-surface p-8 md:col-span-2 md:p-10">
+              <article>
+                <Eyebrow>Document verification</Eyebrow>
+                <h3 className="mt-4 font-serif text-2xl text-pl-text md:text-3xl">
+                  Every document, cross-checked against every other.
+                </h3>
+                <p className="mt-4 max-w-xl text-sm leading-relaxed text-pl-muted">
+                  Textract extracts the structure. Bedrock checks it against the
+                  fraud patterns that actually occur here — forged consent
+                  endorsements, beacon numbers that don&apos;t match the address,
+                  a deed signed before the C of O it relies on.
                 </p>
-                <p className="mt-2.5 text-sm leading-relaxed text-pl-text">
-                  The consent reference LSLB/GC/2024/3318 is dated 14 March
-                  2024, but references in that sequence were not issued until
-                  August. A consent cannot be endorsed before it exists.
-                </p>
-              </div>
-            </article>
 
-            <article className="bg-pl-surface p-8 md:p-10">
-              <Eyebrow>AI valuation</Eyebrow>
-              <h3 className="mt-4 font-serif text-2xl text-pl-text">
-                What it is actually worth.
-              </h3>
-              <p className="mt-4 text-sm leading-relaxed text-pl-muted">
-                Valued from comparable sales in the same area, weighted for
-                recency and plot size.
-              </p>
-
-              <div className="mt-8">
-                <p className="font-mono text-2xl text-pl-copper-lgt">
-                  ₦198,000,000
-                </p>
-                <div className="mt-4 h-[3px] w-full bg-pl-border">
-                  <div className="h-full w-[62%] bg-pl-copper" />
+                <div className="mt-8 border-l-2 border-l-pl-flagged bg-pl-surface2 p-5">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-pl-flagged">
+                    Major · Inconsistency · Governor&apos;s consent
+                  </p>
+                  <p className="mt-2.5 text-sm leading-relaxed text-pl-text">
+                    The consent reference LSLB/GC/2024/3318 is dated 14 March
+                    2024, but references in that sequence were not issued until
+                    August. A consent cannot be endorsed before it exists.
+                  </p>
                 </div>
-                <p className="mt-3 font-mono text-[11px] text-pl-muted">
-                  ₦172,000,000 — ₦231,000,000
+              </article>
+            </RevealItem>
+
+            <RevealItem className="bg-pl-surface p-8 md:p-10">
+              <article>
+                <Eyebrow>AI valuation</Eyebrow>
+                <h3 className="mt-4 font-serif text-2xl text-pl-text">
+                  What it is actually worth.
+                </h3>
+                <p className="mt-4 text-sm leading-relaxed text-pl-muted">
+                  Valued from comparable sales in the same area, weighted for
+                  recency and plot size.
                 </p>
-              </div>
-            </article>
 
-            <article className="bg-pl-surface p-8 md:p-10">
-              <Eyebrow>Plain English reports</Eyebrow>
-              <h3 className="mt-4 font-serif text-2xl text-pl-text">
-                Not just flags.
-              </h3>
-              <p className="mt-4 text-sm leading-relaxed text-pl-muted">
-                Explanations and next steps. Written for the person spending
-                their savings, not for their solicitor.
-              </p>
-            </article>
+                <div className="mt-8">
+                  <p className="font-mono text-2xl text-pl-copper-lgt">
+                    ₦198,000,000
+                  </p>
+                  <div className="mt-4 h-[3px] w-full bg-pl-border">
+                    <div className="h-full w-[62%] bg-pl-copper" />
+                  </div>
+                  <p className="mt-3 font-mono text-[11px] text-pl-muted">
+                    ₦172,000,000 — ₦231,000,000
+                  </p>
+                </div>
+              </article>
+            </RevealItem>
 
-            <article className="bg-pl-surface p-8 md:col-span-2 md:p-10">
-              <Eyebrow>One-click PDF</Eyebrow>
-              <h3 className="mt-4 font-serif text-2xl text-pl-text md:text-3xl">
-                Download your report. Hand it to your lawyer.
-              </h3>
-              <p className="mt-4 max-w-lg text-sm leading-relaxed text-pl-muted">
-                Executive summary, document-by-document findings, the valuation
-                and a numbered list of what to do on Monday morning — including
-                what to search, who to instruct and what it should cost.
-              </p>
-            </article>
-          </div>
+            <RevealItem className="bg-pl-surface p-8 md:p-10">
+              <article>
+                <Eyebrow>Plain English reports</Eyebrow>
+                <h3 className="mt-4 font-serif text-2xl text-pl-text">
+                  Not just flags.
+                </h3>
+                <p className="mt-4 text-sm leading-relaxed text-pl-muted">
+                  Explanations and next steps. Written for the person spending
+                  their savings, not for their solicitor.
+                </p>
+              </article>
+            </RevealItem>
+
+            <RevealItem className="bg-pl-surface p-8 md:col-span-2 md:p-10">
+              <article>
+                <Eyebrow>One-click PDF</Eyebrow>
+                <h3 className="mt-4 font-serif text-2xl text-pl-text md:text-3xl">
+                  Download your report. Hand it to your lawyer.
+                </h3>
+                <p className="mt-4 max-w-lg text-sm leading-relaxed text-pl-muted">
+                  Executive summary, document-by-document findings, the valuation
+                  and a numbered list of what to do on Monday morning — including
+                  what to search, who to instruct and what it should cost.
+                </p>
+              </article>
+            </RevealItem>
+          </RevealStagger>
         </Container>
       </section>
 
       {/* Founders */}
       <section className="border-b border-pl-border py-24 md:py-32">
         <Container>
-          <div className="max-w-2xl">
+          <Reveal className="max-w-2xl">
             <Eyebrow>Who built this</Eyebrow>
             <h2 className="mt-5 font-serif text-3xl leading-tight text-pl-text md:text-5xl">
               We have been on both sides of this problem.
             </h2>
-          </div>
+          </Reveal>
 
-          <div className="mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
+          <RevealStagger className="mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
             {founders.map((f) => (
-              <div key={f.name} className="flex items-start gap-4">
+              <RevealItem key={f.name} className="flex items-start gap-4">
                 <Image
                   src={f.image}
                   alt={`${f.name}, ${f.role}`}
@@ -229,44 +248,48 @@ export default function LandingPage() {
                     {f.short}
                   </p>
                 </div>
-              </div>
+              </RevealItem>
             ))}
-          </div>
+          </RevealStagger>
 
-          <blockquote className="mt-16 max-w-3xl border-l-2 border-l-pl-copper pl-6 md:pl-8">
-            <p className="font-serif text-xl leading-relaxed text-pl-text md:text-2xl">
-              In February 2024 a client of mine lost ₦18 million on a plot in
-              Lekki Phase 2. The Certificate of Occupancy was genuine — the
-              governor&apos;s consent had been forged, and the seller had
-              already sold the same plot three months earlier.
-            </p>
-            <footer className="mt-5 text-sm text-pl-muted">
-              Eze Ransome, CEO
-            </footer>
-          </blockquote>
+          <Reveal delay={0.1}>
+            <blockquote className="mt-16 max-w-3xl border-l-2 border-l-pl-copper pl-6 md:pl-8">
+              <p className="font-serif text-xl leading-relaxed text-pl-text md:text-2xl">
+                In February 2024 a client of mine lost ₦18 million on a plot in
+                Lekki Phase 2. The Certificate of Occupancy was genuine — the
+                governor&apos;s consent had been forged, and the seller had
+                already sold the same plot three months earlier.
+              </p>
+              <footer className="mt-5 text-sm text-pl-muted">
+                Eze Ransome, CEO
+              </footer>
+            </blockquote>
 
-          <Link
-            href="/about"
-            className="mt-9 inline-block text-sm text-pl-copper-lgt transition-colors hover:text-pl-copper"
-          >
-            Read our full story →
-          </Link>
+            <Link
+              href="/about"
+              className="mt-9 inline-block text-sm text-pl-copper-lgt transition-colors hover:text-pl-copper"
+            >
+              Read our full story →
+            </Link>
+          </Reveal>
         </Container>
       </section>
 
       {/* Testimonial */}
       <section className="border-b border-pl-border bg-pl-surface py-24 md:py-28">
         <Container>
-          <blockquote className="mx-auto max-w-3xl text-center">
-            <p className="font-serif text-2xl leading-relaxed text-pl-text md:text-4xl md:leading-[1.35]">
-              “Proprepo found a date inconsistency on the deed that our estate
-              agent had missed. That inconsistency saved us from what turned out
-              to be a double-sale case.”
-            </p>
-            <footer className="pl-eyebrow mt-8">
-              Buyer, Lekki, Lagos · Beta participant
-            </footer>
-          </blockquote>
+          <Reveal>
+            <blockquote className="mx-auto max-w-3xl text-center">
+              <p className="font-serif text-2xl leading-relaxed text-pl-text md:text-4xl md:leading-[1.35]">
+                “Proprepo found a date inconsistency on the deed that our estate
+                agent had missed. That inconsistency saved us from what turned out
+                to be a double-sale case.”
+              </p>
+              <footer className="pl-eyebrow mt-8">
+                Buyer, Lekki, Lagos · Beta participant
+              </footer>
+            </blockquote>
+          </Reveal>
         </Container>
       </section>
 
@@ -274,7 +297,7 @@ export default function LandingPage() {
       {/* CTA */}
       <section className="bg-pl-copper py-20 md:py-24">
         <Container>
-          <div className="flex flex-col items-start justify-between gap-9 md:flex-row md:items-center">
+          <Reveal className="flex flex-col items-start justify-between gap-9 md:flex-row md:items-center">
             <h2 className="max-w-xl font-serif text-3xl leading-tight text-[#1A0E03] md:text-4xl">
               Run your first verification before you commit to anything.
             </h2>
@@ -285,7 +308,7 @@ export default function LandingPage() {
             >
               Start Verifying
             </ButtonLink>
-          </div>
+          </Reveal>
         </Container>
       </section>
     </>

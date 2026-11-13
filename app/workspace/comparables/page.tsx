@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { ComparableCard } from '@/components/ComparableCard';
 import { Container, Eyebrow } from '@/components/ui';
+import { Reveal, RevealItem, RevealStagger } from '@/components/motion';
 import { listComparables } from '@/lib/db/repo';
 import { formatNaira, formatSqm } from '@/lib/format';
 import { AREAS } from '@/lib/property/areas';
@@ -29,7 +30,7 @@ export default async function ComparablesPage() {
 
   return (
     <Container className="py-12 md:py-16">
-      <div className="max-w-2xl">
+      <Reveal className="max-w-2xl">
         <Eyebrow>Comparables</Eyebrow>
         <h1 className="mt-4 font-serif text-3xl text-pl-text md:text-4xl">
           What actually sold, and for how much.
@@ -40,14 +41,14 @@ export default async function ComparablesPage() {
           valuation Proprepo produces widens its range to say so rather than
           inventing precision.
         </p>
-      </div>
+      </Reveal>
 
       <div className="mt-14 space-y-16">
         {byArea.map(({ area, sales }) => {
           const avg = rate(sales);
 
           return (
-            <section key={area.code}>
+            <Reveal as="section" key={area.code}>
               <div className="flex flex-wrap items-baseline justify-between gap-3 border-b border-pl-border pb-4">
                 <div className="flex items-baseline gap-4">
                   <h2 className="font-serif text-xl text-pl-text md:text-2xl">
@@ -68,19 +69,20 @@ export default async function ComparablesPage() {
                 ) : null}
               </div>
 
-              <div className="mt-6 flex gap-px overflow-x-auto bg-pl-border pb-1">
+              <RevealStagger className="mt-6 flex gap-px overflow-x-auto bg-pl-border pb-1" stagger={0.05}>
                 {sales.map((sale) => (
-                  <ComparableCard
-                    key={sale.id}
-                    address={sale.address}
-                    size={sale.sizeSqm}
-                    salePrice={sale.salePrice}
-                    saleDate={sale.saleDate}
-                    distance={sale.distanceKm}
-                    source={sale.source}
-                  />
+                  <RevealItem key={sale.id}>
+                    <ComparableCard
+                      address={sale.address}
+                      size={sale.sizeSqm}
+                      salePrice={sale.salePrice}
+                      saleDate={sale.saleDate}
+                      distance={sale.distanceKm}
+                      source={sale.source}
+                    />
+                  </RevealItem>
                 ))}
-              </div>
+              </RevealStagger>
 
               <p className="mt-4 text-xs text-pl-muted">
                 Indicative land rate for {area.name}:{' '}
@@ -88,7 +90,7 @@ export default async function ComparablesPage() {
                 when there is nothing to compare against — a rate is not a
                 valuation.
               </p>
-            </section>
+            </Reveal>
           );
         })}
       </div>

@@ -4,6 +4,7 @@ import { Footer } from '@/components/Footer';
 import { Nav } from '@/components/Nav';
 import { ComparableCard } from '@/components/ComparableCard';
 import { ButtonLink, Container, Eyebrow, RiskBadge } from '@/components/ui';
+import { Reveal, RevealItem, RevealStagger } from '@/components/motion';
 import { getProperty, listComparables, listVerifications } from '@/lib/db/repo';
 import { formatDate } from '@/lib/format';
 import { AREAS } from '@/lib/property/areas';
@@ -71,7 +72,7 @@ export default async function SearchPage({
           <div className="pl-grid pl-grid-fade absolute inset-0" aria-hidden />
 
           <Container className="relative py-16 md:py-24">
-            <div className="max-w-2xl">
+            <Reveal className="max-w-2xl">
               <Eyebrow>Search</Eyebrow>
               <h1 className="mt-5 font-serif text-3xl leading-tight text-pl-text md:text-5xl">
                 Look up a property, a report, or a street.
@@ -87,18 +88,18 @@ export default async function SearchPage({
                 />
                 <button
                   type="submit"
-                  className="shrink-0 bg-pl-copper px-7 text-sm text-white transition-colors hover:bg-pl-copper-lgt"
+                  className="shrink-0 bg-pl-copper px-7 text-sm text-white transition-all duration-200 active:scale-[0.97] hover:bg-pl-copper-lgt"
                 >
                   Search
                 </button>
               </form>
-            </div>
+            </Reveal>
           </Container>
         </section>
 
         <Container className="py-16 md:py-20">
           {!needle ? (
-            <div className="max-w-xl">
+            <Reveal className="max-w-xl">
               <p className="text-sm leading-relaxed text-pl-muted">
                 Search across verification reports, recorded comparable sales
                 and the Lagos and Abuja areas Proprepo covers. Reports are
@@ -119,7 +120,7 @@ export default async function SearchPage({
                   ),
                 )}
               </div>
-            </div>
+            </Reveal>
           ) : null}
 
           {nothing ? (
@@ -140,9 +141,9 @@ export default async function SearchPage({
           {matchedAreas.length ? (
             <section className="mb-16">
               <Eyebrow>Areas · {matchedAreas.length}</Eyebrow>
-              <div className="mt-5 grid gap-px bg-pl-border sm:grid-cols-2 lg:grid-cols-4">
+              <RevealStagger className="mt-5 grid gap-px bg-pl-border sm:grid-cols-2 lg:grid-cols-4" stagger={0.05}>
                 {matchedAreas.map((area) => (
-                  <div key={area.code} className="bg-pl-surface p-5">
+                  <RevealItem key={area.code} className="bg-pl-surface p-5">
                     <p className="text-[15px] text-pl-text">{area.name}</p>
                     <p className="pl-eyebrow mt-1.5">
                       {area.code} · {area.state}
@@ -150,54 +151,57 @@ export default async function SearchPage({
                     <p className="mt-4 font-mono text-sm text-pl-copper-lgt">
                       ₦{area.baseRateSqm.toLocaleString('en-NG')} / sqm
                     </p>
-                  </div>
+                  </RevealItem>
                 ))}
-              </div>
+              </RevealStagger>
             </section>
           ) : null}
 
           {matchedProperties.length ? (
             <section className="mb-16">
               <Eyebrow>Reports · {matchedProperties.length}</Eyebrow>
-              <ul className="mt-5 space-y-px bg-pl-border">
-                {matchedProperties.map(({ verification, address }) => (
-                  <li key={verification.id}>
-                    <Link
-                      href={`/workspace/verify/${verification.id}`}
-                      className="flex flex-col gap-3 bg-pl-surface p-5 transition-colors hover:bg-pl-surface2 sm:flex-row sm:items-center sm:justify-between"
-                    >
-                      <span>
-                        <span className="block text-[15px] text-pl-text">
-                          {address}
+              <RevealStagger className="mt-5 space-y-px bg-pl-border" stagger={0.05}>
+                <ul>
+                  {matchedProperties.map(({ verification, address }) => (
+                    <RevealItem key={verification.id} as="li">
+                      <Link
+                        href={`/workspace/verify/${verification.id}`}
+                        className="flex flex-col gap-3 bg-pl-surface p-5 transition-colors hover:bg-pl-surface2 sm:flex-row sm:items-center sm:justify-between"
+                      >
+                        <span>
+                          <span className="block text-[15px] text-pl-text">
+                            {address}
+                          </span>
+                          <span className="mt-1 block font-mono text-[10px] text-pl-muted">
+                            {verification.id} ·{' '}
+                            {formatDate(verification.createdAt)}
+                          </span>
                         </span>
-                        <span className="mt-1 block font-mono text-[10px] text-pl-muted">
-                          {verification.id} ·{' '}
-                          {formatDate(verification.createdAt)}
-                        </span>
-                      </span>
-                      <RiskBadge risk={verification.overallRisk} />
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+                        <RiskBadge risk={verification.overallRisk} />
+                      </Link>
+                    </RevealItem>
+                  ))}
+                </ul>
+              </RevealStagger>
             </section>
           ) : null}
 
           {matchedSales.length ? (
             <section>
               <Eyebrow>Recorded sales · {matchedSales.length}</Eyebrow>
-              <div className="mt-5 flex gap-px overflow-x-auto bg-pl-border pb-1">
+              <RevealStagger className="mt-5 flex gap-px overflow-x-auto bg-pl-border pb-1" stagger={0.05}>
                 {matchedSales.map((sale) => (
-                  <ComparableCard
-                    key={sale.id}
-                    address={sale.address}
-                    size={sale.sizeSqm}
-                    salePrice={sale.salePrice}
-                    saleDate={sale.saleDate}
-                    source={sale.source}
-                  />
+                  <RevealItem key={sale.id}>
+                    <ComparableCard
+                      address={sale.address}
+                      size={sale.sizeSqm}
+                      salePrice={sale.salePrice}
+                      saleDate={sale.saleDate}
+                      source={sale.source}
+                    />
+                  </RevealItem>
                 ))}
-              </div>
+              </RevealStagger>
             </section>
           ) : null}
         </Container>

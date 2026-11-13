@@ -50,11 +50,18 @@ export function ValuationRange({
         {formatNaira(estimated)}
       </p>
 
-      <div className="relative mt-7 h-[3px] w-full bg-pl-border">
-        <div
-          className="h-full bg-pl-copper transition-[width] duration-700 ease-out"
-          style={{ width: shown ? `${markerPct}%` : '0%' }}
-        />
+      <div className="relative mt-7 h-[3px] w-full">
+        <div className="absolute inset-0 overflow-hidden bg-pl-border">
+          <div
+            className="h-full w-full origin-left bg-pl-copper transition-transform duration-700 ease-out"
+            style={{ transform: `scaleX(${shown ? markerPct / 100 : 0})` }}
+          />
+        </div>
+        {/* The marker's own position must track a percentage of the track's
+            width, not its own — `left` is the correct tool here, and this
+            element never affects surrounding layout (it is absolutely
+            positioned within a fixed-height track), so it carries no
+            layout-shift cost. */}
         <div
           className="absolute top-1/2 h-3.5 w-[3px] -translate-x-1/2 -translate-y-1/2 bg-pl-copper-lgt shadow-glow-copper transition-[left] duration-700 ease-out"
           style={{ left: shown ? `${markerPct}%` : '0%' }}

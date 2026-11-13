@@ -5,6 +5,7 @@ import { DocumentFlag } from '@/components/DocumentFlag';
 import { ValuationRange } from '@/components/ValuationRange';
 import { VerificationStamp } from '@/components/VerificationStamp';
 import { Container, Eyebrow } from '@/components/ui';
+import { Reveal, RevealItem, RevealStagger } from '@/components/motion';
 import { getProperty, getValuationForProperty, getVerification } from '@/lib/db/repo';
 import { formatDate } from '@/lib/format';
 import { documentLabel } from '@/lib/property/documents';
@@ -75,7 +76,7 @@ export default async function VerificationDetailPage({
   return (
     <Container className="py-12 md:py-16">
       {/* Header */}
-      <div className="flex flex-col justify-between gap-8 border-b border-pl-border pb-10 md:flex-row md:items-start">
+      <Reveal className="flex flex-col justify-between gap-8 border-b border-pl-border pb-10 md:flex-row md:items-start">
         <div>
           <Eyebrow>Verification</Eyebrow>
           <h1 className="mt-4 max-w-2xl font-serif text-3xl leading-tight text-pl-text md:text-4xl">
@@ -91,38 +92,40 @@ export default async function VerificationDetailPage({
         {verification.status === 'complete' ? (
           <VerificationStamp risk={verification.overallRisk} />
         ) : null}
-      </div>
+      </Reveal>
 
       <div className="grid gap-10 pt-10 lg:grid-cols-[240px_1fr_280px] lg:gap-8">
         {/* Documents */}
         <aside className="lg:order-1">
           <Eyebrow>Documents</Eyebrow>
 
-          <ul className="mt-4 space-y-px bg-pl-border">
-            {verification.documents.map((doc) => (
-              <li key={doc.s3Key} className="bg-pl-surface p-4">
-                <p className="text-sm leading-snug text-pl-text">
-                  {documentLabel(doc.type)}
-                </p>
-                <p className="mt-1.5 truncate font-mono text-[10px] text-pl-muted">
-                  {doc.extractedData.referenceNumber ?? 'No reference'}
-                </p>
-                <p
-                  className={`mt-2 font-mono text-[10px] uppercase tracking-[0.14em] ${
-                    doc.flags.length ? 'text-pl-flagged' : 'text-pl-verified'
-                  }`}
-                >
-                  {doc.flags.length
-                    ? `${doc.flags.length} flag${doc.flags.length === 1 ? '' : 's'}`
-                    : 'Clear'}
-                </p>
-              </li>
-            ))}
-          </ul>
+          <RevealStagger className="mt-4 space-y-px bg-pl-border" stagger={0.06}>
+            <ul>
+              {verification.documents.map((doc) => (
+                <RevealItem key={doc.s3Key} as="li" className="bg-pl-surface p-4">
+                  <p className="text-sm leading-snug text-pl-text">
+                    {documentLabel(doc.type)}
+                  </p>
+                  <p className="mt-1.5 truncate font-mono text-[10px] text-pl-muted">
+                    {doc.extractedData.referenceNumber ?? 'No reference'}
+                  </p>
+                  <p
+                    className={`mt-2 font-mono text-[10px] uppercase tracking-[0.14em] ${
+                      doc.flags.length ? 'text-pl-flagged' : 'text-pl-verified'
+                    }`}
+                  >
+                    {doc.flags.length
+                      ? `${doc.flags.length} flag${doc.flags.length === 1 ? '' : 's'}`
+                      : 'Clear'}
+                  </p>
+                </RevealItem>
+              ))}
+            </ul>
+          </RevealStagger>
         </aside>
 
         {/* Summary + flags */}
-        <div className="lg:order-2">
+        <Reveal as="div" delay={0.05} className="lg:order-2">
           <Eyebrow>Summary</Eyebrow>
           <p className="mt-4 font-serif text-lg leading-relaxed text-pl-text md:text-xl md:leading-relaxed">
             {verification.summary ||
@@ -135,11 +138,13 @@ export default async function VerificationDetailPage({
             </Eyebrow>
 
             {flags.length ? (
-              <div className="mt-4 space-y-px bg-pl-border">
+              <RevealStagger className="mt-4 space-y-px bg-pl-border" stagger={0.06}>
                 {flags.map((flag, i) => (
-                  <DocumentFlag key={`${flag.fieldAffected}-${i}`} {...flag} />
+                  <RevealItem key={`${flag.fieldAffected}-${i}`}>
+                    <DocumentFlag {...flag} />
+                  </RevealItem>
                 ))}
-              </div>
+              </RevealStagger>
             ) : (
               <p className="mt-4 border border-dashed border-pl-border p-8 text-sm leading-relaxed text-pl-muted">
                 No flags were raised against these documents. That is not a
@@ -164,10 +169,10 @@ export default async function VerificationDetailPage({
               </div>
             </div>
           ) : null}
-        </div>
+        </Reveal>
 
         {/* Risk panel */}
-        <aside className="space-y-8 lg:order-3">
+        <Reveal as="aside" delay={0.1} className="space-y-8 lg:order-3">
           <div className="border border-pl-border bg-pl-surface p-6">
             <Eyebrow>Overall risk</Eyebrow>
             <p
@@ -197,7 +202,7 @@ export default async function VerificationDetailPage({
             verificationId={verification.id}
             status={verification.status}
           />
-        </aside>
+        </Reveal>
       </div>
     </Container>
   );

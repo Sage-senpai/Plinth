@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { ButtonLink, Container, Eyebrow } from '@/components/ui';
+import { Reveal, RevealItem, RevealStagger } from '@/components/motion';
 
 export const metadata: Metadata = {
   title: 'Pricing',
@@ -96,94 +97,101 @@ export default function PricingPage() {
         <div className="pl-grid pl-grid-fade absolute inset-0" aria-hidden />
 
         <Container className="relative py-20 md:py-28">
-          <div className="max-w-3xl">
+          <Reveal className="max-w-3xl">
             <Eyebrow>Pricing</Eyebrow>
             <h1 className="mt-6 font-serif text-4xl leading-[1.1] text-pl-text md:text-6xl">
-              A report costs less than the search fee it saves you.
+              A report costs less{' '}
+              <span className="font-normal text-pl-muted">
+                than the search fee it saves you.
+              </span>
             </h1>
             <p className="mt-7 max-w-xl text-base leading-relaxed text-pl-muted">
               And considerably less than the plot. Every plan includes the full
               verification engine — the tiers differ in volume, not in rigour.
             </p>
-          </div>
+          </Reveal>
         </Container>
       </section>
 
       <section className="border-b border-pl-border py-16 md:py-20">
         <Container>
-          <div className="grid gap-px bg-pl-border md:grid-cols-2 lg:grid-cols-4">
+          <RevealStagger className="grid gap-px bg-pl-border md:grid-cols-2 lg:grid-cols-4">
             {TIERS.map((tier) => (
-              <article
+              <RevealItem
                 key={tier.name}
                 className={`flex flex-col bg-pl-surface p-8 ${
                   tier.featured ? 'ring-1 ring-inset ring-pl-copper' : ''
                 }`}
               >
-                <div className="flex items-baseline justify-between">
-                  <h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-pl-text">
-                    {tier.name}
-                  </h2>
-                  {tier.featured ? (
-                    <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-pl-copper-lgt">
-                      Most chosen
-                    </span>
-                  ) : null}
-                </div>
-
-                <p className="mt-7 font-serif text-3xl text-pl-text">
-                  {tier.naira}
-                </p>
-                <p className="mt-1.5 font-mono text-[11px] text-pl-muted">
-                  {tier.usd ? `${tier.usd} · ` : ''}
-                  {tier.cadence}
-                </p>
-
-                <p className="mt-6 border-t border-pl-border pt-5 text-sm text-pl-copper-lgt">
-                  {tier.reports}
-                </p>
-
-                <ul className="mt-5 flex-1 space-y-2.5">
-                  {tier.features.map((f) => (
-                    <li
-                      key={f}
-                      className="flex gap-2.5 text-sm leading-relaxed text-pl-muted"
-                    >
-                      <span className="text-pl-copper" aria-hidden>
-                        ·
+                <article className="flex h-full flex-col">
+                  <div className="flex items-baseline justify-between">
+                    <h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-pl-text">
+                      {tier.name}
+                    </h2>
+                    {tier.featured ? (
+                      <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-pl-copper-lgt">
+                        Most chosen
                       </span>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
+                    ) : null}
+                  </div>
 
-                <ButtonLink
-                  href="/workspace/verify/new"
-                  variant={tier.featured ? 'copper' : 'ghost'}
-                  className="mt-8 w-full"
-                >
-                  {tier.cta}
-                </ButtonLink>
-              </article>
+                  <p className="mt-7 font-serif text-3xl text-pl-text">
+                    {tier.naira}
+                  </p>
+                  <p className="mt-1.5 font-mono text-[11px] text-pl-muted">
+                    {tier.usd ? `${tier.usd} · ` : ''}
+                    {tier.cadence}
+                  </p>
+
+                  <p className="mt-6 border-t border-pl-border pt-5 text-sm text-pl-copper-lgt">
+                    {tier.reports}
+                  </p>
+
+                  <ul className="mt-5 flex-1 space-y-2.5">
+                    {tier.features.map((f) => (
+                      <li
+                        key={f}
+                        className="flex gap-2.5 text-sm leading-relaxed text-pl-muted"
+                      >
+                        <span className="text-pl-copper" aria-hidden>
+                          ·
+                        </span>
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <ButtonLink
+                    href="/workspace/verify/new"
+                    variant={tier.featured ? 'copper' : 'ghost'}
+                    className="mt-8 w-full"
+                  >
+                    {tier.cta}
+                  </ButtonLink>
+                </article>
+              </RevealItem>
             ))}
-          </div>
+          </RevealStagger>
         </Container>
       </section>
 
       <section className="py-20 md:py-28">
         <Container>
           <div className="grid gap-14 md:grid-cols-[220px_1fr] md:gap-16">
-            <Eyebrow>Questions</Eyebrow>
+            <Reveal>
+              <Eyebrow>Questions</Eyebrow>
+            </Reveal>
 
-            <div className="max-w-2xl divide-y divide-pl-border">
+            <RevealStagger className="max-w-2xl divide-y divide-pl-border" stagger={0.06}>
               {FAQ.map((item) => (
-                <div key={item.q} className="py-7 first:pt-0">
+                <RevealItem key={item.q} className="py-7 first:pt-0">
                   <h3 className="font-serif text-xl text-pl-text">{item.q}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-pl-muted">
                     {item.a}
                   </p>
-                </div>
+                </RevealItem>
               ))}
-            </div>
+            </RevealStagger>
           </div>
         </Container>
       </section>

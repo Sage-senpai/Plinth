@@ -30,7 +30,7 @@ const VARIANTS: Record<ButtonVariant, string> = {
 };
 
 const BASE =
-  'inline-flex items-center justify-center px-6 py-3 text-sm font-medium tracking-wide transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-40';
+  'inline-flex items-center justify-center px-6 py-3 text-sm font-medium tracking-wide transition-all duration-200 active:scale-[0.97] disabled:cursor-not-allowed disabled:active:scale-100 disabled:opacity-40';
 
 export function ButtonLink({
   href,

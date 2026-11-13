@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { ButtonLink, Container, Eyebrow } from '@/components/ui';
+import { Reveal, RevealItem, RevealStagger, StepBadge } from '@/components/motion';
 import { TEAM, TIMELINE, VALUES } from '@/lib/team';
 
 export const metadata: Metadata = {
@@ -39,10 +40,15 @@ export default function AboutPage() {
         </div>
 
         <Container className="relative -mt-32 pb-20 md:-mt-40 md:pb-24">
-          <Eyebrow>About Proprepo</Eyebrow>
-          <h1 className="mt-5 max-w-3xl font-serif text-4xl leading-[1.1] text-pl-text md:text-6xl">
-            Fraud this common is not a market failure. It is a tooling failure.
-          </h1>
+          <Reveal>
+            <Eyebrow>About Proprepo</Eyebrow>
+            <h1 className="mt-5 max-w-3xl font-serif text-4xl leading-[1.1] text-pl-text md:text-6xl">
+              Fraud this common is not a market failure.{' '}
+              <span className="font-normal text-pl-muted">
+                It is a tooling failure.
+              </span>
+            </h1>
+          </Reveal>
         </Container>
       </section>
 
@@ -50,9 +56,11 @@ export default function AboutPage() {
       <section className="border-b border-pl-border py-20 md:py-28">
         <Container>
           <div className="grid gap-14 md:grid-cols-[220px_1fr] md:gap-16">
-            <Eyebrow>The origin</Eyebrow>
+            <Reveal>
+              <Eyebrow>The origin</Eyebrow>
+            </Reveal>
 
-            <div className="max-w-2xl space-y-6 text-base leading-relaxed text-pl-muted md:text-lg">
+            <Reveal delay={0.08} className="max-w-2xl space-y-6 text-base leading-relaxed text-pl-muted md:text-lg">
               <p>
                 In February 2024, a client of Eze&apos;s lost ₦18 million on a
                 plot in Lekki Phase 2. The Certificate of Occupancy was genuine.
@@ -76,7 +84,7 @@ export default function AboutPage() {
                 buyers in secondary cities and emerging areas are entirely
                 unprotected. Proprepo exists to change the arithmetic of that.
               </p>
-            </div>
+            </Reveal>
           </div>
         </Container>
       </section>
@@ -84,37 +92,41 @@ export default function AboutPage() {
       {/* Team */}
       <section className="border-b border-pl-border py-20 md:py-28">
         <Container>
-          <Eyebrow>The team</Eyebrow>
-          <h2 className="mt-5 font-serif text-3xl text-pl-text md:text-4xl">
-            Five people, three of whom have lost sleep over a land dispute.
-          </h2>
+          <Reveal>
+            <Eyebrow>The team</Eyebrow>
+            <h2 className="mt-5 font-serif text-3xl text-pl-text md:text-4xl">
+              Five people, three of whom have lost sleep over a land dispute.
+            </h2>
+          </Reveal>
 
-          <div className="mt-14 grid gap-px bg-pl-border sm:grid-cols-2">
+          <RevealStagger className="mt-14 grid gap-px bg-pl-border sm:grid-cols-2">
             {TEAM.map((member) => (
-              <article key={member.name} className="bg-pl-surface p-8">
-                {/* object-top: these are portraits, so a centred crop lands on
-                    the chest rather than the face. */}
-                <Image
-                  src={member.image}
-                  alt={`${member.name}, ${member.role}`}
-                  width={72}
-                  height={72}
-                  className="h-[72px] w-[72px] object-cover object-top grayscale"
-                />
-                <h3 className="mt-5 text-lg text-pl-text">{member.name}</h3>
-                <p className="pl-eyebrow mt-1.5">{member.role}</p>
-                <p className="mt-4 text-sm leading-relaxed text-pl-muted">
-                  {member.bio}
-                </p>
-
-                {member.quote ? (
-                  <p className="mt-5 border-l-2 border-l-pl-copper pl-4 font-serif text-[15px] leading-relaxed text-pl-text">
-                    {member.quote}
+              <RevealItem key={member.name} className="bg-pl-surface p-8">
+                <article>
+                  {/* object-top: these are portraits, so a centred crop lands on
+                      the chest rather than the face. */}
+                  <Image
+                    src={member.image}
+                    alt={`${member.name}, ${member.role}`}
+                    width={72}
+                    height={72}
+                    className="h-[72px] w-[72px] object-cover object-top grayscale"
+                  />
+                  <h3 className="mt-5 text-lg text-pl-text">{member.name}</h3>
+                  <p className="pl-eyebrow mt-1.5">{member.role}</p>
+                  <p className="mt-4 text-sm leading-relaxed text-pl-muted">
+                    {member.bio}
                   </p>
-                ) : null}
-              </article>
+
+                  {member.quote ? (
+                    <p className="mt-5 border-l-2 border-l-pl-copper pl-4 font-serif text-[15px] leading-relaxed text-pl-text">
+                      {member.quote}
+                    </p>
+                  ) : null}
+                </article>
+              </RevealItem>
             ))}
-          </div>
+          </RevealStagger>
         </Container>
       </section>
 
@@ -122,23 +134,28 @@ export default function AboutPage() {
       <section className="border-b border-pl-border py-20 md:py-28">
         <Container>
           <div className="grid gap-14 md:grid-cols-[220px_1fr] md:gap-16">
-            <Eyebrow>Timeline</Eyebrow>
+            <Reveal>
+              <Eyebrow>Timeline</Eyebrow>
+            </Reveal>
 
-            <ol className="max-w-2xl">
-              {TIMELINE.map((entry) => (
-                <li
-                  key={entry.when}
-                  className="grid grid-cols-[100px_1fr] gap-5 border-t border-pl-border py-5 md:grid-cols-[130px_1fr]"
-                >
-                  <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-pl-copper-lgt">
-                    {entry.when}
-                  </span>
-                  <span className="text-sm leading-relaxed text-pl-muted">
-                    {entry.what}
-                  </span>
-                </li>
-              ))}
-            </ol>
+            <RevealStagger className="max-w-2xl" stagger={0.06}>
+              <ol>
+                {TIMELINE.map((entry) => (
+                  <RevealItem
+                    key={entry.when}
+                    as="li"
+                    className="grid grid-cols-[100px_1fr] gap-5 border-t border-pl-border py-5 md:grid-cols-[130px_1fr]"
+                  >
+                    <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-pl-copper-lgt">
+                      {entry.when}
+                    </span>
+                    <span className="text-sm leading-relaxed text-pl-muted">
+                      {entry.what}
+                    </span>
+                  </RevealItem>
+                ))}
+              </ol>
+            </RevealStagger>
           </div>
         </Container>
       </section>
@@ -146,14 +163,14 @@ export default function AboutPage() {
       {/* Metrics */}
       <section className="border-b border-pl-border py-20 md:py-24">
         <Container>
-          <div className="grid grid-cols-2 gap-px bg-pl-border md:grid-cols-3 lg:grid-cols-6">
+          <RevealStagger className="grid grid-cols-2 gap-px bg-pl-border md:grid-cols-3 lg:grid-cols-6" stagger={0.05}>
             {METRICS.map((m) => (
-              <div key={m.label} className="bg-pl-surface px-5 py-7">
+              <RevealItem key={m.label} className="bg-pl-surface px-5 py-7">
                 <p className="font-mono text-xl text-pl-text">{m.value}</p>
                 <p className="pl-eyebrow mt-2">{m.label}</p>
-              </div>
+              </RevealItem>
             ))}
-          </div>
+          </RevealStagger>
         </Container>
       </section>
 
@@ -161,37 +178,37 @@ export default function AboutPage() {
       <section className="border-b border-pl-border py-20 md:py-28">
         <Container>
           <div className="grid gap-14 md:grid-cols-[220px_1fr] md:gap-16">
-            <Eyebrow>What we hold to</Eyebrow>
+            <Reveal>
+              <Eyebrow>What we hold to</Eyebrow>
+            </Reveal>
 
-            <div className="max-w-2xl space-y-10">
+            <RevealStagger className="max-w-2xl space-y-10" stagger={0.1}>
               {VALUES.map((value, i) => (
-                <div key={value.title}>
-                  <p className="font-mono text-[11px] text-pl-copper-lgt">
-                    0{i + 1}
-                  </p>
+                <RevealItem key={value.title}>
+                  <StepBadge n={i + 1} />
                   <h3 className="mt-3 font-serif text-xl text-pl-text md:text-2xl">
                     {value.title}
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-pl-muted">
                     {value.body}
                   </p>
-                </div>
+                </RevealItem>
               ))}
-            </div>
+            </RevealStagger>
           </div>
         </Container>
       </section>
 
       <section className="py-20 md:py-24">
         <Container>
-          <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
+          <Reveal className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
             <h2 className="max-w-xl font-serif text-2xl leading-tight text-pl-text md:text-3xl">
               Run a verification before you commit to anything.
             </h2>
             <ButtonLink href="/workspace/verify/new" className="shrink-0">
               Start Verifying
             </ButtonLink>
-          </div>
+          </Reveal>
         </Container>
       </section>
     </>

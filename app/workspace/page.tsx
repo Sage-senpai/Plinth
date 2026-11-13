@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ButtonLink, Container, Eyebrow, RiskBadge, StatusLabel } from '@/components/ui';
+import { Reveal, RevealItem, RevealStagger } from '@/components/motion';
 import { getProperty, listVerifications } from '@/lib/db/repo';
 import { formatDate } from '@/lib/format';
 
@@ -22,7 +23,7 @@ export default async function WorkspacePage() {
 
   return (
     <Container className="py-12 md:py-16">
-      <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+      <Reveal className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
         <div>
           <Eyebrow>Workspace</Eyebrow>
           <h1 className="mt-4 font-serif text-3xl text-pl-text md:text-4xl">
@@ -33,16 +34,16 @@ export default async function WorkspacePage() {
         <ButtonLink href="/workspace/verify/new" className="sm:shrink-0">
           New verification
         </ButtonLink>
-      </div>
+      </Reveal>
 
       {rows.length === 0 ? (
-        <div className="mt-12 border border-dashed border-pl-border p-14 text-center">
+        <Reveal className="mt-12 border border-dashed border-pl-border p-14 text-center" delay={0.1}>
           <p className="text-pl-text">No verifications yet.</p>
           <p className="mx-auto mt-2 max-w-sm text-sm leading-relaxed text-pl-muted">
             Upload the documents for a property and Proprepo will check them
             against each other and against the fraud patterns we track.
           </p>
-        </div>
+        </Reveal>
       ) : (
         <>
           {/* Desktop table */}
@@ -59,10 +60,11 @@ export default async function WorkspacePage() {
                   )}
                 </tr>
               </thead>
-              <tbody>
+              <RevealStagger as="tbody" stagger={0.04}>
                 {rows.map((row) => (
-                  <tr
+                  <RevealItem
                     key={row.id}
+                    as="tr"
                     className="group border-b border-pl-border transition-colors hover:bg-pl-surface"
                   >
                     <td className="py-5 pr-6">
@@ -94,34 +96,35 @@ export default async function WorkspacePage() {
                     <td className="py-5 font-mono text-xs text-pl-muted">
                       {formatDate(row.createdAt)}
                     </td>
-                  </tr>
+                  </RevealItem>
                 ))}
-              </tbody>
+              </RevealStagger>
             </table>
           </div>
 
           {/* Mobile cards */}
-          <div className="mt-9 space-y-px bg-pl-border md:hidden">
+          <RevealStagger className="mt-9 space-y-px bg-pl-border md:hidden" stagger={0.04}>
             {rows.map((row) => (
-              <Link
-                key={row.id}
-                href={`/workspace/verify/${row.id}`}
-                className="block bg-pl-surface p-5"
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <p className="text-[15px] leading-snug text-pl-text">
-                    {row.address}
+              <RevealItem key={row.id}>
+                <Link
+                  href={`/workspace/verify/${row.id}`}
+                  className="block bg-pl-surface p-5"
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <p className="text-[15px] leading-snug text-pl-text">
+                      {row.address}
+                    </p>
+                    <RiskBadge risk={row.overallRisk} />
+                  </div>
+                  <p className="mt-3 flex gap-3 font-mono text-[10px] uppercase tracking-[0.14em] text-pl-muted">
+                    <span>{row.documents.length} docs</span>
+                    <span>{row.flagCount} flags</span>
+                    <span>{formatDate(row.createdAt)}</span>
                   </p>
-                  <RiskBadge risk={row.overallRisk} />
-                </div>
-                <p className="mt-3 flex gap-3 font-mono text-[10px] uppercase tracking-[0.14em] text-pl-muted">
-                  <span>{row.documents.length} docs</span>
-                  <span>{row.flagCount} flags</span>
-                  <span>{formatDate(row.createdAt)}</span>
-                </p>
-              </Link>
+                </Link>
+              </RevealItem>
             ))}
-          </div>
+          </RevealStagger>
         </>
       )}
     </Container>

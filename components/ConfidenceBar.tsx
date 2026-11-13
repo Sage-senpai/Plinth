@@ -42,7 +42,7 @@ export function ConfidenceBar({
         <span className="font-mono text-xs text-pl-text">{pct}%</span>
       </div>
       <div
-        className="h-[3px] w-full bg-pl-border"
+        className="h-[3px] w-full overflow-hidden bg-pl-border"
         role="meter"
         aria-valuenow={pct}
         aria-valuemin={0}
@@ -50,8 +50,8 @@ export function ConfidenceBar({
         aria-label={label}
       >
         <div
-          className="h-full bg-pl-blue-lgt transition-[width] duration-700 ease-out"
-          style={{ width: shown ? `${pct}%` : '0%' }}
+          className="h-full w-full origin-left bg-pl-blue-lgt transition-transform duration-700 ease-out"
+          style={{ transform: `scaleX(${shown ? pct / 100 : 0})` }}
         />
       </div>
     </div>

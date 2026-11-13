@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Suspense } from 'react';
 import { Container, Eyebrow } from '@/components/ui';
+import { Reveal } from '@/components/motion';
 import { SignInForm } from './SignInForm';
 
 export const metadata: Metadata = { title: 'Sign in' };
@@ -12,7 +13,7 @@ export default function SignInPage() {
       <div className="pl-grid pl-grid-fade absolute inset-0" aria-hidden />
 
       <Container className="relative">
-        <div className="mx-auto max-w-sm">
+        <Reveal className="mx-auto max-w-sm">
           <Link
             href="/"
             className="font-mono text-sm uppercase tracking-[0.3em] text-pl-text transition-colors hover:text-pl-copper-lgt"
@@ -30,7 +31,7 @@ export default function SignInPage() {
           <Suspense>
             <SignInForm />
           </Suspense>
-        </div>
+        </Reveal>
       </Container>
     </main>
   );

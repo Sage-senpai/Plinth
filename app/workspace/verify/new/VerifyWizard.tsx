@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { useRef, useState } from 'react';
 import { Button, Eyebrow } from '@/components/ui';
+import { StepBadge } from '@/components/motion';
 import { DOCUMENT_TYPES, guessDocumentType } from '@/lib/property/documents';
 import { STATES } from '@/lib/property/areas';
 import type { DocumentType, PropertyType } from '@/lib/types';
@@ -132,13 +133,11 @@ export function VerifyWizard() {
         ).map(([n, title]) => (
           <li key={n} className="flex items-center gap-2.5">
             <span
-              className={`flex h-6 w-6 items-center justify-center border font-mono text-[10px] ${
-                step === n
-                  ? 'border-pl-copper text-pl-copper-lgt'
-                  : 'border-pl-border text-pl-muted'
+              className={`flex h-6 w-6 items-center justify-center border ${
+                step === n ? 'border-pl-copper' : 'border-pl-border'
               }`}
             >
-              {n}
+              <StepBadge n={n} className="text-[10px]" />
             </span>
             <span
               className={`text-sm ${
